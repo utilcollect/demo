@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcFundReportMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcFundReport" >
+    <id column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="d_report_time" property="dReportTime" jdbcType="TIMESTAMP" />
+    <result column="d_fund_create_time" property="dFundCreateTime" jdbcType="TIMESTAMP" />
+    <result column="n_forward_count" property="nForwardCount" jdbcType="INTEGER" />
+    <result column="n_amount" property="nAmount" jdbcType="DECIMAL" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_fund_id, d_report_time, d_fund_create_time, n_forward_count, n_amount, s_created_by, 
+    s_updated_by, d_create_time, d_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_fund_report
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_fund_report
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcFundReport" >
+    insert into hc_fund_report (n_fund_id, d_report_time, d_fund_create_time, 
+      n_forward_count, n_amount, s_created_by, 
+      s_updated_by, d_create_time, d_update_time
+      )
+    values (#{nFundId,jdbcType=BIGINT}, #{dReportTime,jdbcType=TIMESTAMP}, #{dFundCreateTime,jdbcType=TIMESTAMP}, 
+      #{nForwardCount,jdbcType=INTEGER}, #{nAmount,jdbcType=DECIMAL}, #{sCreatedBy,jdbcType=VARCHAR}, 
+      #{sUpdatedBy,jdbcType=VARCHAR}, #{dCreateTime,jdbcType=TIMESTAMP}, #{dUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundReport" >
+    insert into hc_fund_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="dReportTime != null" >
+        d_report_time,
+      </if>
+      <if test="dFundCreateTime != null" >
+        d_fund_create_time,
+      </if>
+      <if test="nForwardCount != null" >
+        n_forward_count,
+      </if>
+      <if test="nAmount != null" >
+        n_amount,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="dReportTime != null" >
+        #{dReportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dFundCreateTime != null" >
+        #{dFundCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nForwardCount != null" >
+        #{nForwardCount,jdbcType=INTEGER},
+      </if>
+      <if test="nAmount != null" >
+        #{nAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundReport" >
+    update hc_fund_report
+    <set >
+      <if test="dReportTime != null" >
+        d_report_time = #{dReportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dFundCreateTime != null" >
+        d_fund_create_time = #{dFundCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nForwardCount != null" >
+        n_forward_count = #{nForwardCount,jdbcType=INTEGER},
+      </if>
+      <if test="nAmount != null" >
+        n_amount = #{nAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcFundReport" >
+    update hc_fund_report
+    set d_report_time = #{dReportTime,jdbcType=TIMESTAMP},
+      d_fund_create_time = #{dFundCreateTime,jdbcType=TIMESTAMP},
+      n_forward_count = #{nForwardCount,jdbcType=INTEGER},
+      n_amount = #{nAmount,jdbcType=DECIMAL},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP}
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </update>
+</mapper>

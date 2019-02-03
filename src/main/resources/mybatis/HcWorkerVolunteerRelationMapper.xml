@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcWorkerVolunteerRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcWorkerVolunteerRelation" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_worker_id" property="nWorkerId" jdbcType="BIGINT" />
+    <result column="n_volunteer_id" property="nVolunteerId" jdbcType="BIGINT" />
+    <result column="s_volunteer_name" property="sVolunteerName" jdbcType="VARCHAR" />
+    <result column="n_status" property="nStatus" jdbcType="INTEGER" />
+    <result column="n_join_way" property="nJoinWay" jdbcType="INTEGER" />
+    <result column="n_hospital_id" property="nHospitalId" jdbcType="BIGINT" />
+    <result column="d_left_time" property="dLeftTime" jdbcType="TIMESTAMP" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_worker_id, n_volunteer_id, s_volunteer_name, n_status, n_join_way, n_hospital_id, 
+    d_left_time, d_create_time, d_update_time, s_created_by, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_worker_volunteer_relation
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_worker_volunteer_relation
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcWorkerVolunteerRelation" >
+    insert into hc_worker_volunteer_relation (n_id, n_worker_id, n_volunteer_id, 
+      s_volunteer_name, n_status, n_join_way, 
+      n_hospital_id, d_left_time, d_create_time, 
+      d_update_time, s_created_by, s_updated_by
+      )
+    values (#{nId,jdbcType=BIGINT}, #{nWorkerId,jdbcType=BIGINT}, #{nVolunteerId,jdbcType=BIGINT}, 
+      #{sVolunteerName,jdbcType=VARCHAR}, #{nStatus,jdbcType=INTEGER}, #{nJoinWay,jdbcType=INTEGER}, 
+      #{nHospitalId,jdbcType=BIGINT}, #{dLeftTime,jdbcType=TIMESTAMP}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{dUpdateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{sUpdatedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcWorkerVolunteerRelation" >
+    insert into hc_worker_volunteer_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nWorkerId != null" >
+        n_worker_id,
+      </if>
+      <if test="nVolunteerId != null" >
+        n_volunteer_id,
+      </if>
+      <if test="sVolunteerName != null" >
+        s_volunteer_name,
+      </if>
+      <if test="nStatus != null" >
+        n_status,
+      </if>
+      <if test="nJoinWay != null" >
+        n_join_way,
+      </if>
+      <if test="nHospitalId != null" >
+        n_hospital_id,
+      </if>
+      <if test="dLeftTime != null" >
+        d_left_time,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nWorkerId != null" >
+        #{nWorkerId,jdbcType=BIGINT},
+      </if>
+      <if test="nVolunteerId != null" >
+        #{nVolunteerId,jdbcType=BIGINT},
+      </if>
+      <if test="sVolunteerName != null" >
+        #{sVolunteerName,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nJoinWay != null" >
+        #{nJoinWay,jdbcType=INTEGER},
+      </if>
+      <if test="nHospitalId != null" >
+        #{nHospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="dLeftTime != null" >
+        #{dLeftTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcWorkerVolunteerRelation" >
+    update hc_worker_volunteer_relation
+    <set >
+      <if test="nWorkerId != null" >
+        n_worker_id = #{nWorkerId,jdbcType=BIGINT},
+      </if>
+      <if test="nVolunteerId != null" >
+        n_volunteer_id = #{nVolunteerId,jdbcType=BIGINT},
+      </if>
+      <if test="sVolunteerName != null" >
+        s_volunteer_name = #{sVolunteerName,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        n_status = #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nJoinWay != null" >
+        n_join_way = #{nJoinWay,jdbcType=INTEGER},
+      </if>
+      <if test="nHospitalId != null" >
+        n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="dLeftTime != null" >
+        d_left_time = #{dLeftTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcWorkerVolunteerRelation" >
+    update hc_worker_volunteer_relation
+    set n_worker_id = #{nWorkerId,jdbcType=BIGINT},
+      n_volunteer_id = #{nVolunteerId,jdbcType=BIGINT},
+      s_volunteer_name = #{sVolunteerName,jdbcType=VARCHAR},
+      n_status = #{nStatus,jdbcType=INTEGER},
+      n_join_way = #{nJoinWay,jdbcType=INTEGER},
+      n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      d_left_time = #{dLeftTime,jdbcType=TIMESTAMP},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

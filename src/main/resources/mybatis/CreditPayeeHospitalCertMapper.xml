@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.CreditPayeeHospitalCertMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.CreditPayeeHospitalCert" >
+    <id column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="s_hosptial_no" property="sHosptialNo" jdbcType="VARCHAR" />
+    <result column="s_depart_no" property="sDepartNo" jdbcType="VARCHAR" />
+    <result column="s_bed_no" property="sBedNo" jdbcType="VARCHAR" />
+    <result column="s_bank_account_name" property="sBankAccountName" jdbcType="VARCHAR" />
+    <result column="s_bank_code" property="sBankCode" jdbcType="VARCHAR" />
+    <result column="s_bank_name" property="sBankName" jdbcType="VARCHAR" />
+    <result column="s_deposit_bank" property="sDepositBank" jdbcType="VARCHAR" />
+    <result column="s_bank_account" property="sBankAccount" jdbcType="VARCHAR" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_fund_id, s_hosptial_no, s_depart_no, s_bed_no, s_bank_account_name, s_bank_code, 
+    s_bank_name, s_deposit_bank, s_bank_account, d_create_time, s_created_by, d_update_time, 
+    s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from credit_payee_hospital_cert
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from credit_payee_hospital_cert
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeHospitalCert" >
+    insert into credit_payee_hospital_cert (n_fund_id, s_hosptial_no, s_depart_no, 
+      s_bed_no, s_bank_account_name, s_bank_code, 
+      s_bank_name, s_deposit_bank, s_bank_account, 
+      d_create_time, s_created_by, d_update_time, 
+      s_updated_by)
+    values (#{nFundId,jdbcType=BIGINT}, #{sHosptialNo,jdbcType=VARCHAR}, #{sDepartNo,jdbcType=VARCHAR}, 
+      #{sBedNo,jdbcType=VARCHAR}, #{sBankAccountName,jdbcType=VARCHAR}, #{sBankCode,jdbcType=VARCHAR}, 
+      #{sBankName,jdbcType=VARCHAR}, #{sDepositBank,jdbcType=VARCHAR}, #{sBankAccount,jdbcType=VARCHAR}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, 
+      #{sUpdatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeHospitalCert" >
+    insert into credit_payee_hospital_cert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="sHosptialNo != null" >
+        s_hosptial_no,
+      </if>
+      <if test="sDepartNo != null" >
+        s_depart_no,
+      </if>
+      <if test="sBedNo != null" >
+        s_bed_no,
+      </if>
+      <if test="sBankAccountName != null" >
+        s_bank_account_name,
+      </if>
+      <if test="sBankCode != null" >
+        s_bank_code,
+      </if>
+      <if test="sBankName != null" >
+        s_bank_name,
+      </if>
+      <if test="sDepositBank != null" >
+        s_deposit_bank,
+      </if>
+      <if test="sBankAccount != null" >
+        s_bank_account,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sHosptialNo != null" >
+        #{sHosptialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sDepartNo != null" >
+        #{sDepartNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sBedNo != null" >
+        #{sBedNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankAccountName != null" >
+        #{sBankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankCode != null" >
+        #{sBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankName != null" >
+        #{sBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDepositBank != null" >
+        #{sDepositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankAccount != null" >
+        #{sBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeHospitalCert" >
+    update credit_payee_hospital_cert
+    <set >
+      <if test="sHosptialNo != null" >
+        s_hosptial_no = #{sHosptialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sDepartNo != null" >
+        s_depart_no = #{sDepartNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sBedNo != null" >
+        s_bed_no = #{sBedNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankAccountName != null" >
+        s_bank_account_name = #{sBankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankCode != null" >
+        s_bank_code = #{sBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankName != null" >
+        s_bank_name = #{sBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDepositBank != null" >
+        s_deposit_bank = #{sDepositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankAccount != null" >
+        s_bank_account = #{sBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeHospitalCert" >
+    update credit_payee_hospital_cert
+    set s_hosptial_no = #{sHosptialNo,jdbcType=VARCHAR},
+      s_depart_no = #{sDepartNo,jdbcType=VARCHAR},
+      s_bed_no = #{sBedNo,jdbcType=VARCHAR},
+      s_bank_account_name = #{sBankAccountName,jdbcType=VARCHAR},
+      s_bank_code = #{sBankCode,jdbcType=VARCHAR},
+      s_bank_name = #{sBankName,jdbcType=VARCHAR},
+      s_deposit_bank = #{sDepositBank,jdbcType=VARCHAR},
+      s_bank_account = #{sBankAccount,jdbcType=VARCHAR},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </update>
+</mapper>

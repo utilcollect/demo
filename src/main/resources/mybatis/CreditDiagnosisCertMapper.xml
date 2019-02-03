@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.CreditDiagnosisCertMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.CreditDiagnosisCert" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="s_diseases" property="sDiseases" jdbcType="VARCHAR" />
+    <result column="s_hospital_name" property="sHospitalName" jdbcType="VARCHAR" />
+    <result column="s_province_name" property="sProvinceName" jdbcType="VARCHAR" />
+    <result column="s_city_name" property="sCityName" jdbcType="VARCHAR" />
+    <result column="s_hospital_addr" property="sHospitalAddr" jdbcType="VARCHAR" />
+    <result column="n_diagnose" property="nDiagnose" jdbcType="INTEGER" />
+    <result column="s_diagnosis_cert_pic" property="sDiagnosisCertPic" jdbcType="VARCHAR" />
+    <result column="s_other_images" property="sOtherImages" jdbcType="VARCHAR" />
+    <result column="n_complete_status" property="nCompleteStatus" jdbcType="INTEGER" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_fund_id, s_diseases, s_hospital_name, s_province_name, s_city_name, s_hospital_addr, 
+    n_diagnose, s_diagnosis_cert_pic, s_other_images, n_complete_status, d_create_time, 
+    s_created_by, d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from credit_diagnosis_cert
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from credit_diagnosis_cert
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCert" >
+    insert into credit_diagnosis_cert (n_id, n_fund_id, s_diseases, 
+      s_hospital_name, s_province_name, s_city_name, 
+      s_hospital_addr, n_diagnose, s_diagnosis_cert_pic, 
+      s_other_images, n_complete_status, d_create_time, 
+      s_created_by, d_update_time, s_updated_by
+      )
+    values (#{nId,jdbcType=BIGINT}, #{nFundId,jdbcType=BIGINT}, #{sDiseases,jdbcType=VARCHAR}, 
+      #{sHospitalName,jdbcType=VARCHAR}, #{sProvinceName,jdbcType=VARCHAR}, #{sCityName,jdbcType=VARCHAR}, 
+      #{sHospitalAddr,jdbcType=VARCHAR}, #{nDiagnose,jdbcType=INTEGER}, #{sDiagnosisCertPic,jdbcType=VARCHAR}, 
+      #{sOtherImages,jdbcType=VARCHAR}, #{nCompleteStatus,jdbcType=INTEGER}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCert" >
+    insert into credit_diagnosis_cert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="sDiseases != null" >
+        s_diseases,
+      </if>
+      <if test="sHospitalName != null" >
+        s_hospital_name,
+      </if>
+      <if test="sProvinceName != null" >
+        s_province_name,
+      </if>
+      <if test="sCityName != null" >
+        s_city_name,
+      </if>
+      <if test="sHospitalAddr != null" >
+        s_hospital_addr,
+      </if>
+      <if test="nDiagnose != null" >
+        n_diagnose,
+      </if>
+      <if test="sDiagnosisCertPic != null" >
+        s_diagnosis_cert_pic,
+      </if>
+      <if test="sOtherImages != null" >
+        s_other_images,
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sDiseases != null" >
+        #{sDiseases,jdbcType=VARCHAR},
+      </if>
+      <if test="sHospitalName != null" >
+        #{sHospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="sProvinceName != null" >
+        #{sProvinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="sCityName != null" >
+        #{sCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="sHospitalAddr != null" >
+        #{sHospitalAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="nDiagnose != null" >
+        #{nDiagnose,jdbcType=INTEGER},
+      </if>
+      <if test="sDiagnosisCertPic != null" >
+        #{sDiagnosisCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="sOtherImages != null" >
+        #{sOtherImages,jdbcType=VARCHAR},
+      </if>
+      <if test="nCompleteStatus != null" >
+        #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCert" >
+    update credit_diagnosis_cert
+    <set >
+      <if test="nFundId != null" >
+        n_fund_id = #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sDiseases != null" >
+        s_diseases = #{sDiseases,jdbcType=VARCHAR},
+      </if>
+      <if test="sHospitalName != null" >
+        s_hospital_name = #{sHospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="sProvinceName != null" >
+        s_province_name = #{sProvinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="sCityName != null" >
+        s_city_name = #{sCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="sHospitalAddr != null" >
+        s_hospital_addr = #{sHospitalAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="nDiagnose != null" >
+        n_diagnose = #{nDiagnose,jdbcType=INTEGER},
+      </if>
+      <if test="sDiagnosisCertPic != null" >
+        s_diagnosis_cert_pic = #{sDiagnosisCertPic,jdbcType=VARCHAR},
+      </if>
+      <if test="sOtherImages != null" >
+        s_other_images = #{sOtherImages,jdbcType=VARCHAR},
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCert" >
+    update credit_diagnosis_cert
+    set n_fund_id = #{nFundId,jdbcType=BIGINT},
+      s_diseases = #{sDiseases,jdbcType=VARCHAR},
+      s_hospital_name = #{sHospitalName,jdbcType=VARCHAR},
+      s_province_name = #{sProvinceName,jdbcType=VARCHAR},
+      s_city_name = #{sCityName,jdbcType=VARCHAR},
+      s_hospital_addr = #{sHospitalAddr,jdbcType=VARCHAR},
+      n_diagnose = #{nDiagnose,jdbcType=INTEGER},
+      s_diagnosis_cert_pic = #{sDiagnosisCertPic,jdbcType=VARCHAR},
+      s_other_images = #{sOtherImages,jdbcType=VARCHAR},
+      n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

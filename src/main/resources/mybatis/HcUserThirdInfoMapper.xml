@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcUserThirdInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcUserThirdInfo" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_user_id" property="nUserId" jdbcType="BIGINT" />
+    <result column="s_third_id" property="sThirdId" jdbcType="VARCHAR" />
+    <result column="s_third_name" property="sThirdName" jdbcType="VARCHAR" />
+    <result column="s_register_type" property="sRegisterType" jdbcType="VARCHAR" />
+    <result column="n_is_app_account" property="nIsAppAccount" jdbcType="INTEGER" />
+    <result column="d_register_time" property="dRegisterTime" jdbcType="TIMESTAMP" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+    <result column="s_sys_code" property="sSysCode" jdbcType="VARCHAR" />
+    <result column="s_third_group_id" property="sThirdGroupId" jdbcType="VARCHAR" />
+    <result column="n_thd_part_concern" property="nThdPartConcern" jdbcType="INTEGER" />
+    <result column="s_channel_category" property="sChannelCategory" jdbcType="VARCHAR" />
+    <result column="s_channel_sub_category" property="sChannelSubCategory" jdbcType="VARCHAR" />
+    <result column="s_channel_type" property="sChannelType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_user_id, s_third_id, s_third_name, s_register_type, n_is_app_account, d_register_time, 
+    d_create_time, s_created_by, d_update_time, s_updated_by, s_sys_code, s_third_group_id, 
+    n_thd_part_concern, s_channel_category, s_channel_sub_category, s_channel_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_user_third_info
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_user_third_info
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcUserThirdInfo" >
+    insert into hc_user_third_info (n_id, n_user_id, s_third_id, 
+      s_third_name, s_register_type, n_is_app_account, 
+      d_register_time, d_create_time, s_created_by, 
+      d_update_time, s_updated_by, s_sys_code, 
+      s_third_group_id, n_thd_part_concern, s_channel_category, 
+      s_channel_sub_category, s_channel_type)
+    values (#{nId,jdbcType=BIGINT}, #{nUserId,jdbcType=BIGINT}, #{sThirdId,jdbcType=VARCHAR}, 
+      #{sThirdName,jdbcType=VARCHAR}, #{sRegisterType,jdbcType=VARCHAR}, #{nIsAppAccount,jdbcType=INTEGER}, 
+      #{dRegisterTime,jdbcType=TIMESTAMP}, #{dCreateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, 
+      #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}, #{sSysCode,jdbcType=VARCHAR}, 
+      #{sThirdGroupId,jdbcType=VARCHAR}, #{nThdPartConcern,jdbcType=INTEGER}, #{sChannelCategory,jdbcType=VARCHAR}, 
+      #{sChannelSubCategory,jdbcType=VARCHAR}, #{sChannelType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcUserThirdInfo" >
+    insert into hc_user_third_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nUserId != null" >
+        n_user_id,
+      </if>
+      <if test="sThirdId != null" >
+        s_third_id,
+      </if>
+      <if test="sThirdName != null" >
+        s_third_name,
+      </if>
+      <if test="sRegisterType != null" >
+        s_register_type,
+      </if>
+      <if test="nIsAppAccount != null" >
+        n_is_app_account,
+      </if>
+      <if test="dRegisterTime != null" >
+        d_register_time,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+      <if test="sSysCode != null" >
+        s_sys_code,
+      </if>
+      <if test="sThirdGroupId != null" >
+        s_third_group_id,
+      </if>
+      <if test="nThdPartConcern != null" >
+        n_thd_part_concern,
+      </if>
+      <if test="sChannelCategory != null" >
+        s_channel_category,
+      </if>
+      <if test="sChannelSubCategory != null" >
+        s_channel_sub_category,
+      </if>
+      <if test="sChannelType != null" >
+        s_channel_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nUserId != null" >
+        #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sThirdId != null" >
+        #{sThirdId,jdbcType=VARCHAR},
+      </if>
+      <if test="sThirdName != null" >
+        #{sThirdName,jdbcType=VARCHAR},
+      </if>
+      <if test="sRegisterType != null" >
+        #{sRegisterType,jdbcType=VARCHAR},
+      </if>
+      <if test="nIsAppAccount != null" >
+        #{nIsAppAccount,jdbcType=INTEGER},
+      </if>
+      <if test="dRegisterTime != null" >
+        #{dRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sSysCode != null" >
+        #{sSysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sThirdGroupId != null" >
+        #{sThirdGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="nThdPartConcern != null" >
+        #{nThdPartConcern,jdbcType=INTEGER},
+      </if>
+      <if test="sChannelCategory != null" >
+        #{sChannelCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sChannelSubCategory != null" >
+        #{sChannelSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sChannelType != null" >
+        #{sChannelType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcUserThirdInfo" >
+    update hc_user_third_info
+    <set >
+      <if test="nUserId != null" >
+        n_user_id = #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sThirdId != null" >
+        s_third_id = #{sThirdId,jdbcType=VARCHAR},
+      </if>
+      <if test="sThirdName != null" >
+        s_third_name = #{sThirdName,jdbcType=VARCHAR},
+      </if>
+      <if test="sRegisterType != null" >
+        s_register_type = #{sRegisterType,jdbcType=VARCHAR},
+      </if>
+      <if test="nIsAppAccount != null" >
+        n_is_app_account = #{nIsAppAccount,jdbcType=INTEGER},
+      </if>
+      <if test="dRegisterTime != null" >
+        d_register_time = #{dRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sSysCode != null" >
+        s_sys_code = #{sSysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sThirdGroupId != null" >
+        s_third_group_id = #{sThirdGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="nThdPartConcern != null" >
+        n_thd_part_concern = #{nThdPartConcern,jdbcType=INTEGER},
+      </if>
+      <if test="sChannelCategory != null" >
+        s_channel_category = #{sChannelCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sChannelSubCategory != null" >
+        s_channel_sub_category = #{sChannelSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sChannelType != null" >
+        s_channel_type = #{sChannelType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcUserThirdInfo" >
+    update hc_user_third_info
+    set n_user_id = #{nUserId,jdbcType=BIGINT},
+      s_third_id = #{sThirdId,jdbcType=VARCHAR},
+      s_third_name = #{sThirdName,jdbcType=VARCHAR},
+      s_register_type = #{sRegisterType,jdbcType=VARCHAR},
+      n_is_app_account = #{nIsAppAccount,jdbcType=INTEGER},
+      d_register_time = #{dRegisterTime,jdbcType=TIMESTAMP},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      s_sys_code = #{sSysCode,jdbcType=VARCHAR},
+      s_third_group_id = #{sThirdGroupId,jdbcType=VARCHAR},
+      n_thd_part_concern = #{nThdPartConcern,jdbcType=INTEGER},
+      s_channel_category = #{sChannelCategory,jdbcType=VARCHAR},
+      s_channel_sub_category = #{sChannelSubCategory,jdbcType=VARCHAR},
+      s_channel_type = #{sChannelType,jdbcType=INTEGER}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

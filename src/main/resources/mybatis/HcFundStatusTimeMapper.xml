@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcFundStatusTimeMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcFundStatusTime" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="n_fund_id" property="nFundId" jdbcType="INTEGER" />
+    <result column="d_wait_registry_start_time" property="dWaitRegistryStartTime" jdbcType="TIMESTAMP" />
+    <result column="n_urgency_registry_status" property="nUrgencyRegistryStatus" jdbcType="INTEGER" />
+    <result column="d_urgency_registry_time" property="dUrgencyRegistryTime" jdbcType="TIMESTAMP" />
+    <result column="d_wait_forward_start_time" property="dWaitForwardStartTime" jdbcType="TIMESTAMP" />
+    <result column="n_urgency_forward_status" property="nUrgencyForwardStatus" jdbcType="INTEGER" />
+    <result column="d_urgency_forward_time" property="dUrgencyForwardTime" jdbcType="TIMESTAMP" />
+    <result column="d_wait_verify_start_time" property="dWaitVerifyStartTime" jdbcType="TIMESTAMP" />
+    <result column="n_urgency_verify_status" property="nUrgencyVerifyStatus" jdbcType="INTEGER" />
+    <result column="d_urgency_verify_time" property="dUrgencyVerifyTime" jdbcType="TIMESTAMP" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_fund_id, d_wait_registry_start_time, n_urgency_registry_status, d_urgency_registry_time, 
+    d_wait_forward_start_time, n_urgency_forward_status, d_urgency_forward_time, d_wait_verify_start_time, 
+    n_urgency_verify_status, d_urgency_verify_time, d_create_time, d_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_fund_status_time
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hc_fund_status_time
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcFundStatusTime" >
+    insert into hc_fund_status_time (n_id, n_fund_id, d_wait_registry_start_time, 
+      n_urgency_registry_status, d_urgency_registry_time, 
+      d_wait_forward_start_time, n_urgency_forward_status, 
+      d_urgency_forward_time, d_wait_verify_start_time, 
+      n_urgency_verify_status, d_urgency_verify_time, 
+      d_create_time, d_update_time)
+    values (#{nId,jdbcType=INTEGER}, #{nFundId,jdbcType=INTEGER}, #{dWaitRegistryStartTime,jdbcType=TIMESTAMP}, 
+      #{nUrgencyRegistryStatus,jdbcType=INTEGER}, #{dUrgencyRegistryTime,jdbcType=TIMESTAMP}, 
+      #{dWaitForwardStartTime,jdbcType=TIMESTAMP}, #{nUrgencyForwardStatus,jdbcType=INTEGER}, 
+      #{dUrgencyForwardTime,jdbcType=TIMESTAMP}, #{dWaitVerifyStartTime,jdbcType=TIMESTAMP}, 
+      #{nUrgencyVerifyStatus,jdbcType=INTEGER}, #{dUrgencyVerifyTime,jdbcType=TIMESTAMP}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{dUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundStatusTime" >
+    insert into hc_fund_status_time
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="dWaitRegistryStartTime != null" >
+        d_wait_registry_start_time,
+      </if>
+      <if test="nUrgencyRegistryStatus != null" >
+        n_urgency_registry_status,
+      </if>
+      <if test="dUrgencyRegistryTime != null" >
+        d_urgency_registry_time,
+      </if>
+      <if test="dWaitForwardStartTime != null" >
+        d_wait_forward_start_time,
+      </if>
+      <if test="nUrgencyForwardStatus != null" >
+        n_urgency_forward_status,
+      </if>
+      <if test="dUrgencyForwardTime != null" >
+        d_urgency_forward_time,
+      </if>
+      <if test="dWaitVerifyStartTime != null" >
+        d_wait_verify_start_time,
+      </if>
+      <if test="nUrgencyVerifyStatus != null" >
+        n_urgency_verify_status,
+      </if>
+      <if test="dUrgencyVerifyTime != null" >
+        d_urgency_verify_time,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=INTEGER},
+      </if>
+      <if test="dWaitRegistryStartTime != null" >
+        #{dWaitRegistryStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUrgencyRegistryStatus != null" >
+        #{nUrgencyRegistryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dUrgencyRegistryTime != null" >
+        #{dUrgencyRegistryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dWaitForwardStartTime != null" >
+        #{dWaitForwardStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUrgencyForwardStatus != null" >
+        #{nUrgencyForwardStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dUrgencyForwardTime != null" >
+        #{dUrgencyForwardTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dWaitVerifyStartTime != null" >
+        #{dWaitVerifyStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUrgencyVerifyStatus != null" >
+        #{nUrgencyVerifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dUrgencyVerifyTime != null" >
+        #{dUrgencyVerifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundStatusTime" >
+    update hc_fund_status_time
+    <set >
+      <if test="nFundId != null" >
+        n_fund_id = #{nFundId,jdbcType=INTEGER},
+      </if>
+      <if test="dWaitRegistryStartTime != null" >
+        d_wait_registry_start_time = #{dWaitRegistryStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUrgencyRegistryStatus != null" >
+        n_urgency_registry_status = #{nUrgencyRegistryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dUrgencyRegistryTime != null" >
+        d_urgency_registry_time = #{dUrgencyRegistryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dWaitForwardStartTime != null" >
+        d_wait_forward_start_time = #{dWaitForwardStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUrgencyForwardStatus != null" >
+        n_urgency_forward_status = #{nUrgencyForwardStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dUrgencyForwardTime != null" >
+        d_urgency_forward_time = #{dUrgencyForwardTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dWaitVerifyStartTime != null" >
+        d_wait_verify_start_time = #{dWaitVerifyStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUrgencyVerifyStatus != null" >
+        n_urgency_verify_status = #{nUrgencyVerifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dUrgencyVerifyTime != null" >
+        d_urgency_verify_time = #{dUrgencyVerifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcFundStatusTime" >
+    update hc_fund_status_time
+    set n_fund_id = #{nFundId,jdbcType=INTEGER},
+      d_wait_registry_start_time = #{dWaitRegistryStartTime,jdbcType=TIMESTAMP},
+      n_urgency_registry_status = #{nUrgencyRegistryStatus,jdbcType=INTEGER},
+      d_urgency_registry_time = #{dUrgencyRegistryTime,jdbcType=TIMESTAMP},
+      d_wait_forward_start_time = #{dWaitForwardStartTime,jdbcType=TIMESTAMP},
+      n_urgency_forward_status = #{nUrgencyForwardStatus,jdbcType=INTEGER},
+      d_urgency_forward_time = #{dUrgencyForwardTime,jdbcType=TIMESTAMP},
+      d_wait_verify_start_time = #{dWaitVerifyStartTime,jdbcType=TIMESTAMP},
+      n_urgency_verify_status = #{nUrgencyVerifyStatus,jdbcType=INTEGER},
+      d_urgency_verify_time = #{dUrgencyVerifyTime,jdbcType=TIMESTAMP},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

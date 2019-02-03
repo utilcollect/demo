@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.CreditDiagnosisCertPicMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.CreditDiagnosisCertPic" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="n_diagnosis_cert_id" property="nDiagnosisCertId" jdbcType="BIGINT" />
+    <result column="n_photo_type" property="nPhotoType" jdbcType="INTEGER" />
+    <result column="s_path" property="sPath" jdbcType="VARCHAR" />
+    <result column="n_status" property="nStatus" jdbcType="INTEGER" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_fund_id, n_diagnosis_cert_id, n_photo_type, s_path, n_status, d_create_time, 
+    s_created_by, d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from credit_diagnosis_cert_pic
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from credit_diagnosis_cert_pic
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCertPic" >
+    insert into credit_diagnosis_cert_pic (n_id, n_fund_id, n_diagnosis_cert_id, 
+      n_photo_type, s_path, n_status, 
+      d_create_time, s_created_by, d_update_time, 
+      s_updated_by)
+    values (#{nId,jdbcType=BIGINT}, #{nFundId,jdbcType=BIGINT}, #{nDiagnosisCertId,jdbcType=BIGINT}, 
+      #{nPhotoType,jdbcType=INTEGER}, #{sPath,jdbcType=VARCHAR}, #{nStatus,jdbcType=INTEGER}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, 
+      #{sUpdatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCertPic" >
+    insert into credit_diagnosis_cert_pic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="nDiagnosisCertId != null" >
+        n_diagnosis_cert_id,
+      </if>
+      <if test="nPhotoType != null" >
+        n_photo_type,
+      </if>
+      <if test="sPath != null" >
+        s_path,
+      </if>
+      <if test="nStatus != null" >
+        n_status,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="nDiagnosisCertId != null" >
+        #{nDiagnosisCertId,jdbcType=BIGINT},
+      </if>
+      <if test="nPhotoType != null" >
+        #{nPhotoType,jdbcType=INTEGER},
+      </if>
+      <if test="sPath != null" >
+        #{sPath,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCertPic" >
+    update credit_diagnosis_cert_pic
+    <set >
+      <if test="nFundId != null" >
+        n_fund_id = #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="nDiagnosisCertId != null" >
+        n_diagnosis_cert_id = #{nDiagnosisCertId,jdbcType=BIGINT},
+      </if>
+      <if test="nPhotoType != null" >
+        n_photo_type = #{nPhotoType,jdbcType=INTEGER},
+      </if>
+      <if test="sPath != null" >
+        s_path = #{sPath,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        n_status = #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.CreditDiagnosisCertPic" >
+    update credit_diagnosis_cert_pic
+    set n_fund_id = #{nFundId,jdbcType=BIGINT},
+      n_diagnosis_cert_id = #{nDiagnosisCertId,jdbcType=BIGINT},
+      n_photo_type = #{nPhotoType,jdbcType=INTEGER},
+      s_path = #{sPath,jdbcType=VARCHAR},
+      n_status = #{nStatus,jdbcType=INTEGER},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

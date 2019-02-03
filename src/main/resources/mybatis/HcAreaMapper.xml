@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcArea" >
+    <id column="n_area_id" property="nAreaId" jdbcType="BIGINT" />
+    <result column="s_area_code" property="sAreaCode" jdbcType="VARCHAR" />
+    <result column="s_area_name" property="sAreaName" jdbcType="VARCHAR" />
+    <result column="s_area_name_abbr" property="sAreaNameAbbr" jdbcType="VARCHAR" />
+    <result column="n_level" property="nLevel" jdbcType="INTEGER" />
+    <result column="s_city_code" property="sCityCode" jdbcType="VARCHAR" />
+    <result column="s_center" property="sCenter" jdbcType="VARCHAR" />
+    <result column="n_parent_id" property="nParentId" jdbcType="BIGINT" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_area_id, s_area_code, s_area_name, s_area_name_abbr, n_level, s_city_code, s_center, 
+    n_parent_id, d_create_time, s_created_by, d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_area
+    where n_area_id = #{nAreaId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_area
+    where n_area_id = #{nAreaId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcArea" >
+    insert into hc_area (n_area_id, s_area_code, s_area_name, 
+      s_area_name_abbr, n_level, s_city_code, 
+      s_center, n_parent_id, d_create_time, 
+      s_created_by, d_update_time, s_updated_by
+      )
+    values (#{nAreaId,jdbcType=BIGINT}, #{sAreaCode,jdbcType=VARCHAR}, #{sAreaName,jdbcType=VARCHAR}, 
+      #{sAreaNameAbbr,jdbcType=VARCHAR}, #{nLevel,jdbcType=INTEGER}, #{sCityCode,jdbcType=VARCHAR}, 
+      #{sCenter,jdbcType=VARCHAR}, #{nParentId,jdbcType=BIGINT}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcArea" >
+    insert into hc_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nAreaId != null" >
+        n_area_id,
+      </if>
+      <if test="sAreaCode != null" >
+        s_area_code,
+      </if>
+      <if test="sAreaName != null" >
+        s_area_name,
+      </if>
+      <if test="sAreaNameAbbr != null" >
+        s_area_name_abbr,
+      </if>
+      <if test="nLevel != null" >
+        n_level,
+      </if>
+      <if test="sCityCode != null" >
+        s_city_code,
+      </if>
+      <if test="sCenter != null" >
+        s_center,
+      </if>
+      <if test="nParentId != null" >
+        n_parent_id,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nAreaId != null" >
+        #{nAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="sAreaCode != null" >
+        #{sAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sAreaName != null" >
+        #{sAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="sAreaNameAbbr != null" >
+        #{sAreaNameAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="nLevel != null" >
+        #{nLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sCityCode != null" >
+        #{sCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sCenter != null" >
+        #{sCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="nParentId != null" >
+        #{nParentId,jdbcType=BIGINT},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcArea" >
+    update hc_area
+    <set >
+      <if test="sAreaCode != null" >
+        s_area_code = #{sAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sAreaName != null" >
+        s_area_name = #{sAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="sAreaNameAbbr != null" >
+        s_area_name_abbr = #{sAreaNameAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="nLevel != null" >
+        n_level = #{nLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sCityCode != null" >
+        s_city_code = #{sCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sCenter != null" >
+        s_center = #{sCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="nParentId != null" >
+        n_parent_id = #{nParentId,jdbcType=BIGINT},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_area_id = #{nAreaId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcArea" >
+    update hc_area
+    set s_area_code = #{sAreaCode,jdbcType=VARCHAR},
+      s_area_name = #{sAreaName,jdbcType=VARCHAR},
+      s_area_name_abbr = #{sAreaNameAbbr,jdbcType=VARCHAR},
+      n_level = #{nLevel,jdbcType=INTEGER},
+      s_city_code = #{sCityCode,jdbcType=VARCHAR},
+      s_center = #{sCenter,jdbcType=VARCHAR},
+      n_parent_id = #{nParentId,jdbcType=BIGINT},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_area_id = #{nAreaId,jdbcType=BIGINT}
+  </update>
+</mapper>

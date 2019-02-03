@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.CreditPayeeSelfCertMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.CreditPayeeSelfCert" >
+    <id column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="s_real_name" property="sRealName" jdbcType="VARCHAR" />
+    <result column="s_id_card_no" property="sIdCardNo" jdbcType="VARCHAR" />
+    <result column="s_mobile" property="sMobile" jdbcType="VARCHAR" />
+    <result column="s_bank_code" property="sBankCode" jdbcType="VARCHAR" />
+    <result column="s_bank_name" property="sBankName" jdbcType="VARCHAR" />
+    <result column="s_deposit_bank" property="sDepositBank" jdbcType="VARCHAR" />
+    <result column="s_bank_account" property="sBankAccount" jdbcType="VARCHAR" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_fund_id, s_real_name, s_id_card_no, s_mobile, s_bank_code, s_bank_name, s_deposit_bank, 
+    s_bank_account, d_create_time, s_created_by, d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from credit_payee_self_cert
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from credit_payee_self_cert
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeSelfCert" >
+    insert into credit_payee_self_cert (n_fund_id, s_real_name, s_id_card_no, 
+      s_mobile, s_bank_code, s_bank_name, 
+      s_deposit_bank, s_bank_account, d_create_time, 
+      s_created_by, d_update_time, s_updated_by
+      )
+    values (#{nFundId,jdbcType=BIGINT}, #{sRealName,jdbcType=VARCHAR}, #{sIdCardNo,jdbcType=VARCHAR}, 
+      #{sMobile,jdbcType=VARCHAR}, #{sBankCode,jdbcType=VARCHAR}, #{sBankName,jdbcType=VARCHAR}, 
+      #{sDepositBank,jdbcType=VARCHAR}, #{sBankAccount,jdbcType=VARCHAR}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeSelfCert" >
+    insert into credit_payee_self_cert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="sRealName != null" >
+        s_real_name,
+      </if>
+      <if test="sIdCardNo != null" >
+        s_id_card_no,
+      </if>
+      <if test="sMobile != null" >
+        s_mobile,
+      </if>
+      <if test="sBankCode != null" >
+        s_bank_code,
+      </if>
+      <if test="sBankName != null" >
+        s_bank_name,
+      </if>
+      <if test="sDepositBank != null" >
+        s_deposit_bank,
+      </if>
+      <if test="sBankAccount != null" >
+        s_bank_account,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sRealName != null" >
+        #{sRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdCardNo != null" >
+        #{sIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobile != null" >
+        #{sMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankCode != null" >
+        #{sBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankName != null" >
+        #{sBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDepositBank != null" >
+        #{sDepositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankAccount != null" >
+        #{sBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeSelfCert" >
+    update credit_payee_self_cert
+    <set >
+      <if test="sRealName != null" >
+        s_real_name = #{sRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdCardNo != null" >
+        s_id_card_no = #{sIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobile != null" >
+        s_mobile = #{sMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankCode != null" >
+        s_bank_code = #{sBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankName != null" >
+        s_bank_name = #{sBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDepositBank != null" >
+        s_deposit_bank = #{sDepositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankAccount != null" >
+        s_bank_account = #{sBankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.CreditPayeeSelfCert" >
+    update credit_payee_self_cert
+    set s_real_name = #{sRealName,jdbcType=VARCHAR},
+      s_id_card_no = #{sIdCardNo,jdbcType=VARCHAR},
+      s_mobile = #{sMobile,jdbcType=VARCHAR},
+      s_bank_code = #{sBankCode,jdbcType=VARCHAR},
+      s_bank_name = #{sBankName,jdbcType=VARCHAR},
+      s_deposit_bank = #{sDepositBank,jdbcType=VARCHAR},
+      s_bank_account = #{sBankAccount,jdbcType=VARCHAR},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_fund_id = #{nFundId,jdbcType=BIGINT}
+  </update>
+</mapper>

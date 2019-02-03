@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcUserBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcUserBaseInfo" >
+    <id column="n_user_id" property="nUserId" jdbcType="BIGINT" />
+    <result column="s_login_name" property="sLoginName" jdbcType="VARCHAR" />
+    <result column="s_mobile_number" property="sMobileNumber" jdbcType="VARCHAR" />
+    <result column="s_thd_part_id" property="sThdPartId" jdbcType="VARCHAR" />
+    <result column="s_nick_name" property="sNickName" jdbcType="VARCHAR" />
+    <result column="s_real_name" property="sRealName" jdbcType="VARCHAR" />
+    <result column="s_idcard_number" property="sIdcardNumber" jdbcType="VARCHAR" />
+    <result column="s_password" property="sPassword" jdbcType="VARCHAR" />
+    <result column="s_pay_password" property="sPayPassword" jdbcType="VARCHAR" />
+    <result column="n_status" property="nStatus" jdbcType="INTEGER" />
+    <result column="d_register_time" property="dRegisterTime" jdbcType="TIMESTAMP" />
+    <result column="d_last_login_time" property="dLastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="s_platform_version" property="sPlatformVersion" jdbcType="VARCHAR" />
+    <result column="s_platform_code" property="sPlatformCode" jdbcType="VARCHAR" />
+    <result column="s_app_version" property="sAppVersion" jdbcType="VARCHAR" />
+    <result column="s_phone_name" property="sPhoneName" jdbcType="VARCHAR" />
+    <result column="s_uuid" property="sUuid" jdbcType="VARCHAR" />
+    <result column="n_app_version_num" property="nAppVersionNum" jdbcType="INTEGER" />
+    <result column="s_ipaddress" property="sIpaddress" jdbcType="VARCHAR" />
+    <result column="s_third_group_id" property="sThirdGroupId" jdbcType="VARCHAR" />
+    <result column="s_remark" property="sRemark" jdbcType="VARCHAR" />
+    <result column="s_face_url" property="sFaceUrl" jdbcType="VARCHAR" />
+    <result column="d_certification_time" property="dCertificationTime" jdbcType="TIMESTAMP" />
+    <result column="n_approve_status" property="nApproveStatus" jdbcType="INTEGER" />
+    <result column="s_signature" property="sSignature" jdbcType="VARCHAR" />
+    <result column="n_sex" property="nSex" jdbcType="INTEGER" />
+    <result column="d_birth_date" property="dBirthDate" jdbcType="TIMESTAMP" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+    <result column="s_old_mobile_number" property="sOldMobileNumber" jdbcType="VARCHAR" />
+    <result column="s_qr_code" property="sQrCode" jdbcType="VARCHAR" />
+    <result column="s_qr_code_url" property="sQrCodeUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_user_id, s_login_name, s_mobile_number, s_thd_part_id, s_nick_name, s_real_name, 
+    s_idcard_number, s_password, s_pay_password, n_status, d_register_time, d_last_login_time, 
+    s_platform_version, s_platform_code, s_app_version, s_phone_name, s_uuid, n_app_version_num, 
+    s_ipaddress, s_third_group_id, s_remark, s_face_url, d_certification_time, n_approve_status, 
+    s_signature, n_sex, d_birth_date, d_create_time, s_created_by, d_update_time, s_updated_by, 
+    s_old_mobile_number, s_qr_code, s_qr_code_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_user_base_info
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_user_base_info
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcUserBaseInfo" >
+    insert into hc_user_base_info (n_user_id, s_login_name, s_mobile_number, 
+      s_thd_part_id, s_nick_name, s_real_name, 
+      s_idcard_number, s_password, s_pay_password, 
+      n_status, d_register_time, d_last_login_time, 
+      s_platform_version, s_platform_code, s_app_version, 
+      s_phone_name, s_uuid, n_app_version_num, 
+      s_ipaddress, s_third_group_id, s_remark, 
+      s_face_url, d_certification_time, n_approve_status, 
+      s_signature, n_sex, d_birth_date, 
+      d_create_time, s_created_by, d_update_time, 
+      s_updated_by, s_old_mobile_number, s_qr_code, 
+      s_qr_code_url)
+    values (#{nUserId,jdbcType=BIGINT}, #{sLoginName,jdbcType=VARCHAR}, #{sMobileNumber,jdbcType=VARCHAR}, 
+      #{sThdPartId,jdbcType=VARCHAR}, #{sNickName,jdbcType=VARCHAR}, #{sRealName,jdbcType=VARCHAR}, 
+      #{sIdcardNumber,jdbcType=VARCHAR}, #{sPassword,jdbcType=VARCHAR}, #{sPayPassword,jdbcType=VARCHAR}, 
+      #{nStatus,jdbcType=INTEGER}, #{dRegisterTime,jdbcType=TIMESTAMP}, #{dLastLoginTime,jdbcType=TIMESTAMP}, 
+      #{sPlatformVersion,jdbcType=VARCHAR}, #{sPlatformCode,jdbcType=VARCHAR}, #{sAppVersion,jdbcType=VARCHAR}, 
+      #{sPhoneName,jdbcType=VARCHAR}, #{sUuid,jdbcType=VARCHAR}, #{nAppVersionNum,jdbcType=INTEGER}, 
+      #{sIpaddress,jdbcType=VARCHAR}, #{sThirdGroupId,jdbcType=VARCHAR}, #{sRemark,jdbcType=VARCHAR}, 
+      #{sFaceUrl,jdbcType=VARCHAR}, #{dCertificationTime,jdbcType=TIMESTAMP}, #{nApproveStatus,jdbcType=INTEGER}, 
+      #{sSignature,jdbcType=VARCHAR}, #{nSex,jdbcType=INTEGER}, #{dBirthDate,jdbcType=TIMESTAMP}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, 
+      #{sUpdatedBy,jdbcType=VARCHAR}, #{sOldMobileNumber,jdbcType=VARCHAR}, #{sQrCode,jdbcType=VARCHAR}, 
+      #{sQrCodeUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcUserBaseInfo" >
+    insert into hc_user_base_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nUserId != null" >
+        n_user_id,
+      </if>
+      <if test="sLoginName != null" >
+        s_login_name,
+      </if>
+      <if test="sMobileNumber != null" >
+        s_mobile_number,
+      </if>
+      <if test="sThdPartId != null" >
+        s_thd_part_id,
+      </if>
+      <if test="sNickName != null" >
+        s_nick_name,
+      </if>
+      <if test="sRealName != null" >
+        s_real_name,
+      </if>
+      <if test="sIdcardNumber != null" >
+        s_idcard_number,
+      </if>
+      <if test="sPassword != null" >
+        s_password,
+      </if>
+      <if test="sPayPassword != null" >
+        s_pay_password,
+      </if>
+      <if test="nStatus != null" >
+        n_status,
+      </if>
+      <if test="dRegisterTime != null" >
+        d_register_time,
+      </if>
+      <if test="dLastLoginTime != null" >
+        d_last_login_time,
+      </if>
+      <if test="sPlatformVersion != null" >
+        s_platform_version,
+      </if>
+      <if test="sPlatformCode != null" >
+        s_platform_code,
+      </if>
+      <if test="sAppVersion != null" >
+        s_app_version,
+      </if>
+      <if test="sPhoneName != null" >
+        s_phone_name,
+      </if>
+      <if test="sUuid != null" >
+        s_uuid,
+      </if>
+      <if test="nAppVersionNum != null" >
+        n_app_version_num,
+      </if>
+      <if test="sIpaddress != null" >
+        s_ipaddress,
+      </if>
+      <if test="sThirdGroupId != null" >
+        s_third_group_id,
+      </if>
+      <if test="sRemark != null" >
+        s_remark,
+      </if>
+      <if test="sFaceUrl != null" >
+        s_face_url,
+      </if>
+      <if test="dCertificationTime != null" >
+        d_certification_time,
+      </if>
+      <if test="nApproveStatus != null" >
+        n_approve_status,
+      </if>
+      <if test="sSignature != null" >
+        s_signature,
+      </if>
+      <if test="nSex != null" >
+        n_sex,
+      </if>
+      <if test="dBirthDate != null" >
+        d_birth_date,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+      <if test="sOldMobileNumber != null" >
+        s_old_mobile_number,
+      </if>
+      <if test="sQrCode != null" >
+        s_qr_code,
+      </if>
+      <if test="sQrCodeUrl != null" >
+        s_qr_code_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nUserId != null" >
+        #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sLoginName != null" >
+        #{sLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumber != null" >
+        #{sMobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sThdPartId != null" >
+        #{sThdPartId,jdbcType=VARCHAR},
+      </if>
+      <if test="sNickName != null" >
+        #{sNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sRealName != null" >
+        #{sRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdcardNumber != null" >
+        #{sIdcardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null" >
+        #{sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sPayPassword != null" >
+        #{sPayPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dRegisterTime != null" >
+        #{dRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dLastLoginTime != null" >
+        #{dLastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sPlatformVersion != null" >
+        #{sPlatformVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="sPlatformCode != null" >
+        #{sPlatformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sAppVersion != null" >
+        #{sAppVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhoneName != null" >
+        #{sPhoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="sUuid != null" >
+        #{sUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="nAppVersionNum != null" >
+        #{nAppVersionNum,jdbcType=INTEGER},
+      </if>
+      <if test="sIpaddress != null" >
+        #{sIpaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sThirdGroupId != null" >
+        #{sThirdGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="sRemark != null" >
+        #{sRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sFaceUrl != null" >
+        #{sFaceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dCertificationTime != null" >
+        #{dCertificationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nApproveStatus != null" >
+        #{nApproveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sSignature != null" >
+        #{sSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="nSex != null" >
+        #{nSex,jdbcType=INTEGER},
+      </if>
+      <if test="dBirthDate != null" >
+        #{dBirthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sOldMobileNumber != null" >
+        #{sOldMobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sQrCode != null" >
+        #{sQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sQrCodeUrl != null" >
+        #{sQrCodeUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcUserBaseInfo" >
+    update hc_user_base_info
+    <set >
+      <if test="sLoginName != null" >
+        s_login_name = #{sLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumber != null" >
+        s_mobile_number = #{sMobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sThdPartId != null" >
+        s_thd_part_id = #{sThdPartId,jdbcType=VARCHAR},
+      </if>
+      <if test="sNickName != null" >
+        s_nick_name = #{sNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sRealName != null" >
+        s_real_name = #{sRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdcardNumber != null" >
+        s_idcard_number = #{sIdcardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null" >
+        s_password = #{sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sPayPassword != null" >
+        s_pay_password = #{sPayPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        n_status = #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dRegisterTime != null" >
+        d_register_time = #{dRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dLastLoginTime != null" >
+        d_last_login_time = #{dLastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sPlatformVersion != null" >
+        s_platform_version = #{sPlatformVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="sPlatformCode != null" >
+        s_platform_code = #{sPlatformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sAppVersion != null" >
+        s_app_version = #{sAppVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhoneName != null" >
+        s_phone_name = #{sPhoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="sUuid != null" >
+        s_uuid = #{sUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="nAppVersionNum != null" >
+        n_app_version_num = #{nAppVersionNum,jdbcType=INTEGER},
+      </if>
+      <if test="sIpaddress != null" >
+        s_ipaddress = #{sIpaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sThirdGroupId != null" >
+        s_third_group_id = #{sThirdGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="sRemark != null" >
+        s_remark = #{sRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sFaceUrl != null" >
+        s_face_url = #{sFaceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dCertificationTime != null" >
+        d_certification_time = #{dCertificationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nApproveStatus != null" >
+        n_approve_status = #{nApproveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sSignature != null" >
+        s_signature = #{sSignature,jdbcType=VARCHAR},
+      </if>
+      <if test="nSex != null" >
+        n_sex = #{nSex,jdbcType=INTEGER},
+      </if>
+      <if test="dBirthDate != null" >
+        d_birth_date = #{dBirthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sOldMobileNumber != null" >
+        s_old_mobile_number = #{sOldMobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sQrCode != null" >
+        s_qr_code = #{sQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sQrCodeUrl != null" >
+        s_qr_code_url = #{sQrCodeUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcUserBaseInfo" >
+    update hc_user_base_info
+    set s_login_name = #{sLoginName,jdbcType=VARCHAR},
+      s_mobile_number = #{sMobileNumber,jdbcType=VARCHAR},
+      s_thd_part_id = #{sThdPartId,jdbcType=VARCHAR},
+      s_nick_name = #{sNickName,jdbcType=VARCHAR},
+      s_real_name = #{sRealName,jdbcType=VARCHAR},
+      s_idcard_number = #{sIdcardNumber,jdbcType=VARCHAR},
+      s_password = #{sPassword,jdbcType=VARCHAR},
+      s_pay_password = #{sPayPassword,jdbcType=VARCHAR},
+      n_status = #{nStatus,jdbcType=INTEGER},
+      d_register_time = #{dRegisterTime,jdbcType=TIMESTAMP},
+      d_last_login_time = #{dLastLoginTime,jdbcType=TIMESTAMP},
+      s_platform_version = #{sPlatformVersion,jdbcType=VARCHAR},
+      s_platform_code = #{sPlatformCode,jdbcType=VARCHAR},
+      s_app_version = #{sAppVersion,jdbcType=VARCHAR},
+      s_phone_name = #{sPhoneName,jdbcType=VARCHAR},
+      s_uuid = #{sUuid,jdbcType=VARCHAR},
+      n_app_version_num = #{nAppVersionNum,jdbcType=INTEGER},
+      s_ipaddress = #{sIpaddress,jdbcType=VARCHAR},
+      s_third_group_id = #{sThirdGroupId,jdbcType=VARCHAR},
+      s_remark = #{sRemark,jdbcType=VARCHAR},
+      s_face_url = #{sFaceUrl,jdbcType=VARCHAR},
+      d_certification_time = #{dCertificationTime,jdbcType=TIMESTAMP},
+      n_approve_status = #{nApproveStatus,jdbcType=INTEGER},
+      s_signature = #{sSignature,jdbcType=VARCHAR},
+      n_sex = #{nSex,jdbcType=INTEGER},
+      d_birth_date = #{dBirthDate,jdbcType=TIMESTAMP},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      s_old_mobile_number = #{sOldMobileNumber,jdbcType=VARCHAR},
+      s_qr_code = #{sQrCode,jdbcType=VARCHAR},
+      s_qr_code_url = #{sQrCodeUrl,jdbcType=VARCHAR}
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </update>
+</mapper>

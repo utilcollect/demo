@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.CreditExtraCertMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.CreditExtraCert" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="n_house_number" property="nHouseNumber" jdbcType="INTEGER" />
+    <result column="n_house_total_value" property="nHouseTotalValue" jdbcType="DECIMAL" />
+    <result column="n_house_handle_status" property="nHouseHandleStatus" jdbcType="INTEGER" />
+    <result column="n_car_number" property="nCarNumber" jdbcType="INTEGER" />
+    <result column="n_car_total_value" property="nCarTotalValue" jdbcType="DECIMAL" />
+    <result column="n_car_handle_status" property="nCarHandleStatus" jdbcType="INTEGER" />
+    <result column="n_complete_status" property="nCompleteStatus" jdbcType="INTEGER" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_fund_id, n_house_number, n_house_total_value, n_house_handle_status, n_car_number, 
+    n_car_total_value, n_car_handle_status, n_complete_status, d_create_time, s_created_by, 
+    d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from credit_extra_cert
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from credit_extra_cert
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.CreditExtraCert" >
+    insert into credit_extra_cert (n_id, n_fund_id, n_house_number, 
+      n_house_total_value, n_house_handle_status, n_car_number, 
+      n_car_total_value, n_car_handle_status, n_complete_status, 
+      d_create_time, s_created_by, d_update_time, 
+      s_updated_by)
+    values (#{nId,jdbcType=BIGINT}, #{nFundId,jdbcType=BIGINT}, #{nHouseNumber,jdbcType=INTEGER}, 
+      #{nHouseTotalValue,jdbcType=DECIMAL}, #{nHouseHandleStatus,jdbcType=INTEGER}, #{nCarNumber,jdbcType=INTEGER}, 
+      #{nCarTotalValue,jdbcType=DECIMAL}, #{nCarHandleStatus,jdbcType=INTEGER}, #{nCompleteStatus,jdbcType=INTEGER}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, 
+      #{sUpdatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.CreditExtraCert" >
+    insert into credit_extra_cert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="nHouseNumber != null" >
+        n_house_number,
+      </if>
+      <if test="nHouseTotalValue != null" >
+        n_house_total_value,
+      </if>
+      <if test="nHouseHandleStatus != null" >
+        n_house_handle_status,
+      </if>
+      <if test="nCarNumber != null" >
+        n_car_number,
+      </if>
+      <if test="nCarTotalValue != null" >
+        n_car_total_value,
+      </if>
+      <if test="nCarHandleStatus != null" >
+        n_car_handle_status,
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="nHouseNumber != null" >
+        #{nHouseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="nHouseTotalValue != null" >
+        #{nHouseTotalValue,jdbcType=DECIMAL},
+      </if>
+      <if test="nHouseHandleStatus != null" >
+        #{nHouseHandleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nCarNumber != null" >
+        #{nCarNumber,jdbcType=INTEGER},
+      </if>
+      <if test="nCarTotalValue != null" >
+        #{nCarTotalValue,jdbcType=DECIMAL},
+      </if>
+      <if test="nCarHandleStatus != null" >
+        #{nCarHandleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nCompleteStatus != null" >
+        #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.CreditExtraCert" >
+    update credit_extra_cert
+    <set >
+      <if test="nFundId != null" >
+        n_fund_id = #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="nHouseNumber != null" >
+        n_house_number = #{nHouseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="nHouseTotalValue != null" >
+        n_house_total_value = #{nHouseTotalValue,jdbcType=DECIMAL},
+      </if>
+      <if test="nHouseHandleStatus != null" >
+        n_house_handle_status = #{nHouseHandleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nCarNumber != null" >
+        n_car_number = #{nCarNumber,jdbcType=INTEGER},
+      </if>
+      <if test="nCarTotalValue != null" >
+        n_car_total_value = #{nCarTotalValue,jdbcType=DECIMAL},
+      </if>
+      <if test="nCarHandleStatus != null" >
+        n_car_handle_status = #{nCarHandleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.CreditExtraCert" >
+    update credit_extra_cert
+    set n_fund_id = #{nFundId,jdbcType=BIGINT},
+      n_house_number = #{nHouseNumber,jdbcType=INTEGER},
+      n_house_total_value = #{nHouseTotalValue,jdbcType=DECIMAL},
+      n_house_handle_status = #{nHouseHandleStatus,jdbcType=INTEGER},
+      n_car_number = #{nCarNumber,jdbcType=INTEGER},
+      n_car_total_value = #{nCarTotalValue,jdbcType=DECIMAL},
+      n_car_handle_status = #{nCarHandleStatus,jdbcType=INTEGER},
+      n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

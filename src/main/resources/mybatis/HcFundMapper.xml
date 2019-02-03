@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcFundMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcFund" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="s_uuid" property="sUuid" jdbcType="VARCHAR" />
+    <result column="n_worker_id" property="nWorkerId" jdbcType="BIGINT" />
+    <result column="n_hospital_id" property="nHospitalId" jdbcType="BIGINT" />
+    <result column="n_user_id" property="nUserId" jdbcType="BIGINT" />
+    <result column="s_nick_name" property="sNickName" jdbcType="VARCHAR" />
+    <result column="s_face_url" property="sFaceUrl" jdbcType="VARCHAR" />
+    <result column="s_mobile_number" property="sMobileNumber" jdbcType="VARCHAR" />
+    <result column="s_mobile_number_patient" property="sMobileNumberPatient" jdbcType="VARCHAR" />
+    <result column="s_mobile_number_direct" property="sMobileNumberDirect" jdbcType="VARCHAR" />
+    <result column="n_target_money" property="nTargetMoney" jdbcType="DECIMAL" />
+    <result column="s_title" property="sTitle" jdbcType="VARCHAR" />
+    <result column="n_sum_money" property="nSumMoney" jdbcType="DECIMAL" />
+    <result column="n_number_of_donations" property="nNumberOfDonations" jdbcType="BIGINT" />
+    <result column="n_withdraw_money" property="nWithdrawMoney" jdbcType="DECIMAL" />
+    <result column="d_expire_time" property="dExpireTime" jdbcType="TIMESTAMP" />
+    <result column="d_object_over_time" property="dObjectOverTime" jdbcType="TIMESTAMP" />
+    <result column="n_forward_number" property="nForwardNumber" jdbcType="BIGINT" />
+    <result column="n_upload_number" property="nUploadNumber" jdbcType="BIGINT" />
+    <result column="n_first_donation_tag" property="nFirstDonationTag" jdbcType="INTEGER" />
+    <result column="s_channel_type" property="sChannelType" jdbcType="INTEGER" />
+    <result column="s_channel_category" property="sChannelCategory" jdbcType="VARCHAR" />
+    <result column="s_channel_sub_category" property="sChannelSubCategory" jdbcType="VARCHAR" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="d_submit_time" property="dSubmitTime" jdbcType="TIMESTAMP" />
+    <result column="d_launch_time" property="dLaunchTime" jdbcType="TIMESTAMP" />
+    <result column="d_verify_time" property="dVerifyTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+    <result column="s_star_remark" property="sStarRemark" jdbcType="VARCHAR" />
+    <result column="n_star_id" property="nStarId" jdbcType="INTEGER" />
+    <result column="s_star_created_by" property="sStarCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_star_update_time" property="dStarUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="n_complete_status" property="nCompleteStatus" jdbcType="INTEGER" />
+    <result column="n_fund_status" property="nFundStatus" jdbcType="INTEGER" />
+    <result column="s_volunteer_remark" property="sVolunteerRemark" jdbcType="VARCHAR" />
+    <result column="s_fail_reason" property="sFailReason" jdbcType="VARCHAR" />
+    <result column="s_launch_fail_reason" property="sLaunchFailReason" jdbcType="VARCHAR" />
+    <result column="n_delete" property="nDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gezhiwei.demo.dao.entity.HcFundWithBLOBs" extends="BaseResultMap" >
+    <result column="s_description" property="sDescription" jdbcType="LONGVARCHAR" />
+    <result column="s_img" property="sImg" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, s_uuid, n_worker_id, n_hospital_id, n_user_id, s_nick_name, s_face_url, s_mobile_number, 
+    s_mobile_number_patient, s_mobile_number_direct, n_target_money, s_title, n_sum_money, 
+    n_number_of_donations, n_withdraw_money, d_expire_time, d_object_over_time, n_forward_number, 
+    n_upload_number, n_first_donation_tag, s_channel_type, s_channel_category, s_channel_sub_category, 
+    d_create_time, d_submit_time, d_launch_time, d_verify_time, s_created_by, d_update_time, 
+    s_updated_by, s_star_remark, n_star_id, s_star_created_by, d_star_update_time, n_complete_status, 
+    n_fund_status, s_volunteer_remark, s_fail_reason, s_launch_fail_reason, n_delete
+  </sql>
+  <sql id="Blob_Column_List" >
+    s_description, s_img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hc_fund
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_fund
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcFundWithBLOBs" >
+    insert into hc_fund (n_id, s_uuid, n_worker_id, 
+      n_hospital_id, n_user_id, s_nick_name, 
+      s_face_url, s_mobile_number, s_mobile_number_patient, 
+      s_mobile_number_direct, n_target_money, s_title, 
+      n_sum_money, n_number_of_donations, n_withdraw_money, 
+      d_expire_time, d_object_over_time, n_forward_number, 
+      n_upload_number, n_first_donation_tag, s_channel_type, 
+      s_channel_category, s_channel_sub_category, 
+      d_create_time, d_submit_time, d_launch_time, 
+      d_verify_time, s_created_by, d_update_time, 
+      s_updated_by, s_star_remark, n_star_id, 
+      s_star_created_by, d_star_update_time, n_complete_status, 
+      n_fund_status, s_volunteer_remark, s_fail_reason, 
+      s_launch_fail_reason, n_delete, s_description, 
+      s_img)
+    values (#{nId,jdbcType=BIGINT}, #{sUuid,jdbcType=VARCHAR}, #{nWorkerId,jdbcType=BIGINT}, 
+      #{nHospitalId,jdbcType=BIGINT}, #{nUserId,jdbcType=BIGINT}, #{sNickName,jdbcType=VARCHAR}, 
+      #{sFaceUrl,jdbcType=VARCHAR}, #{sMobileNumber,jdbcType=VARCHAR}, #{sMobileNumberPatient,jdbcType=VARCHAR}, 
+      #{sMobileNumberDirect,jdbcType=VARCHAR}, #{nTargetMoney,jdbcType=DECIMAL}, #{sTitle,jdbcType=VARCHAR}, 
+      #{nSumMoney,jdbcType=DECIMAL}, #{nNumberOfDonations,jdbcType=BIGINT}, #{nWithdrawMoney,jdbcType=DECIMAL}, 
+      #{dExpireTime,jdbcType=TIMESTAMP}, #{dObjectOverTime,jdbcType=TIMESTAMP}, #{nForwardNumber,jdbcType=BIGINT}, 
+      #{nUploadNumber,jdbcType=BIGINT}, #{nFirstDonationTag,jdbcType=INTEGER}, #{sChannelType,jdbcType=INTEGER}, 
+      #{sChannelCategory,jdbcType=VARCHAR}, #{sChannelSubCategory,jdbcType=VARCHAR}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{dSubmitTime,jdbcType=TIMESTAMP}, #{dLaunchTime,jdbcType=TIMESTAMP}, 
+      #{dVerifyTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, 
+      #{sUpdatedBy,jdbcType=VARCHAR}, #{sStarRemark,jdbcType=VARCHAR}, #{nStarId,jdbcType=INTEGER}, 
+      #{sStarCreatedBy,jdbcType=VARCHAR}, #{dStarUpdateTime,jdbcType=TIMESTAMP}, #{nCompleteStatus,jdbcType=INTEGER}, 
+      #{nFundStatus,jdbcType=INTEGER}, #{sVolunteerRemark,jdbcType=VARCHAR}, #{sFailReason,jdbcType=VARCHAR}, 
+      #{sLaunchFailReason,jdbcType=VARCHAR}, #{nDelete,jdbcType=INTEGER}, #{sDescription,jdbcType=LONGVARCHAR}, 
+      #{sImg,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundWithBLOBs" >
+    insert into hc_fund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="sUuid != null" >
+        s_uuid,
+      </if>
+      <if test="nWorkerId != null" >
+        n_worker_id,
+      </if>
+      <if test="nHospitalId != null" >
+        n_hospital_id,
+      </if>
+      <if test="nUserId != null" >
+        n_user_id,
+      </if>
+      <if test="sNickName != null" >
+        s_nick_name,
+      </if>
+      <if test="sFaceUrl != null" >
+        s_face_url,
+      </if>
+      <if test="sMobileNumber != null" >
+        s_mobile_number,
+      </if>
+      <if test="sMobileNumberPatient != null" >
+        s_mobile_number_patient,
+      </if>
+      <if test="sMobileNumberDirect != null" >
+        s_mobile_number_direct,
+      </if>
+      <if test="nTargetMoney != null" >
+        n_target_money,
+      </if>
+      <if test="sTitle != null" >
+        s_title,
+      </if>
+      <if test="nSumMoney != null" >
+        n_sum_money,
+      </if>
+      <if test="nNumberOfDonations != null" >
+        n_number_of_donations,
+      </if>
+      <if test="nWithdrawMoney != null" >
+        n_withdraw_money,
+      </if>
+      <if test="dExpireTime != null" >
+        d_expire_time,
+      </if>
+      <if test="dObjectOverTime != null" >
+        d_object_over_time,
+      </if>
+      <if test="nForwardNumber != null" >
+        n_forward_number,
+      </if>
+      <if test="nUploadNumber != null" >
+        n_upload_number,
+      </if>
+      <if test="nFirstDonationTag != null" >
+        n_first_donation_tag,
+      </if>
+      <if test="sChannelType != null" >
+        s_channel_type,
+      </if>
+      <if test="sChannelCategory != null" >
+        s_channel_category,
+      </if>
+      <if test="sChannelSubCategory != null" >
+        s_channel_sub_category,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="dSubmitTime != null" >
+        d_submit_time,
+      </if>
+      <if test="dLaunchTime != null" >
+        d_launch_time,
+      </if>
+      <if test="dVerifyTime != null" >
+        d_verify_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+      <if test="sStarRemark != null" >
+        s_star_remark,
+      </if>
+      <if test="nStarId != null" >
+        n_star_id,
+      </if>
+      <if test="sStarCreatedBy != null" >
+        s_star_created_by,
+      </if>
+      <if test="dStarUpdateTime != null" >
+        d_star_update_time,
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status,
+      </if>
+      <if test="nFundStatus != null" >
+        n_fund_status,
+      </if>
+      <if test="sVolunteerRemark != null" >
+        s_volunteer_remark,
+      </if>
+      <if test="sFailReason != null" >
+        s_fail_reason,
+      </if>
+      <if test="sLaunchFailReason != null" >
+        s_launch_fail_reason,
+      </if>
+      <if test="nDelete != null" >
+        n_delete,
+      </if>
+      <if test="sDescription != null" >
+        s_description,
+      </if>
+      <if test="sImg != null" >
+        s_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="sUuid != null" >
+        #{sUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="nWorkerId != null" >
+        #{nWorkerId,jdbcType=BIGINT},
+      </if>
+      <if test="nHospitalId != null" >
+        #{nHospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="nUserId != null" >
+        #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sNickName != null" >
+        #{sNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sFaceUrl != null" >
+        #{sFaceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumber != null" >
+        #{sMobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumberPatient != null" >
+        #{sMobileNumberPatient,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumberDirect != null" >
+        #{sMobileNumberDirect,jdbcType=VARCHAR},
+      </if>
+      <if test="nTargetMoney != null" >
+        #{nTargetMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sTitle != null" >
+        #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nSumMoney != null" >
+        #{nSumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="nNumberOfDonations != null" >
+        #{nNumberOfDonations,jdbcType=BIGINT},
+      </if>
+      <if test="nWithdrawMoney != null" >
+        #{nWithdrawMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="dExpireTime != null" >
+        #{dExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dObjectOverTime != null" >
+        #{dObjectOverTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nForwardNumber != null" >
+        #{nForwardNumber,jdbcType=BIGINT},
+      </if>
+      <if test="nUploadNumber != null" >
+        #{nUploadNumber,jdbcType=BIGINT},
+      </if>
+      <if test="nFirstDonationTag != null" >
+        #{nFirstDonationTag,jdbcType=INTEGER},
+      </if>
+      <if test="sChannelType != null" >
+        #{sChannelType,jdbcType=INTEGER},
+      </if>
+      <if test="sChannelCategory != null" >
+        #{sChannelCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sChannelSubCategory != null" >
+        #{sChannelSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dSubmitTime != null" >
+        #{dSubmitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dLaunchTime != null" >
+        #{dLaunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dVerifyTime != null" >
+        #{dVerifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sStarRemark != null" >
+        #{sStarRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="nStarId != null" >
+        #{nStarId,jdbcType=INTEGER},
+      </if>
+      <if test="sStarCreatedBy != null" >
+        #{sStarCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dStarUpdateTime != null" >
+        #{dStarUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nCompleteStatus != null" >
+        #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nFundStatus != null" >
+        #{nFundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sVolunteerRemark != null" >
+        #{sVolunteerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sFailReason != null" >
+        #{sFailReason,jdbcType=VARCHAR},
+      </if>
+      <if test="sLaunchFailReason != null" >
+        #{sLaunchFailReason,jdbcType=VARCHAR},
+      </if>
+      <if test="nDelete != null" >
+        #{nDelete,jdbcType=INTEGER},
+      </if>
+      <if test="sDescription != null" >
+        #{sDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sImg != null" >
+        #{sImg,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundWithBLOBs" >
+    update hc_fund
+    <set >
+      <if test="sUuid != null" >
+        s_uuid = #{sUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="nWorkerId != null" >
+        n_worker_id = #{nWorkerId,jdbcType=BIGINT},
+      </if>
+      <if test="nHospitalId != null" >
+        n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="nUserId != null" >
+        n_user_id = #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sNickName != null" >
+        s_nick_name = #{sNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sFaceUrl != null" >
+        s_face_url = #{sFaceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumber != null" >
+        s_mobile_number = #{sMobileNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumberPatient != null" >
+        s_mobile_number_patient = #{sMobileNumberPatient,jdbcType=VARCHAR},
+      </if>
+      <if test="sMobileNumberDirect != null" >
+        s_mobile_number_direct = #{sMobileNumberDirect,jdbcType=VARCHAR},
+      </if>
+      <if test="nTargetMoney != null" >
+        n_target_money = #{nTargetMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sTitle != null" >
+        s_title = #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nSumMoney != null" >
+        n_sum_money = #{nSumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="nNumberOfDonations != null" >
+        n_number_of_donations = #{nNumberOfDonations,jdbcType=BIGINT},
+      </if>
+      <if test="nWithdrawMoney != null" >
+        n_withdraw_money = #{nWithdrawMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="dExpireTime != null" >
+        d_expire_time = #{dExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dObjectOverTime != null" >
+        d_object_over_time = #{dObjectOverTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nForwardNumber != null" >
+        n_forward_number = #{nForwardNumber,jdbcType=BIGINT},
+      </if>
+      <if test="nUploadNumber != null" >
+        n_upload_number = #{nUploadNumber,jdbcType=BIGINT},
+      </if>
+      <if test="nFirstDonationTag != null" >
+        n_first_donation_tag = #{nFirstDonationTag,jdbcType=INTEGER},
+      </if>
+      <if test="sChannelType != null" >
+        s_channel_type = #{sChannelType,jdbcType=INTEGER},
+      </if>
+      <if test="sChannelCategory != null" >
+        s_channel_category = #{sChannelCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sChannelSubCategory != null" >
+        s_channel_sub_category = #{sChannelSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dSubmitTime != null" >
+        d_submit_time = #{dSubmitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dLaunchTime != null" >
+        d_launch_time = #{dLaunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dVerifyTime != null" >
+        d_verify_time = #{dVerifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="sStarRemark != null" >
+        s_star_remark = #{sStarRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="nStarId != null" >
+        n_star_id = #{nStarId,jdbcType=INTEGER},
+      </if>
+      <if test="sStarCreatedBy != null" >
+        s_star_created_by = #{sStarCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dStarUpdateTime != null" >
+        d_star_update_time = #{dStarUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nFundStatus != null" >
+        n_fund_status = #{nFundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sVolunteerRemark != null" >
+        s_volunteer_remark = #{sVolunteerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sFailReason != null" >
+        s_fail_reason = #{sFailReason,jdbcType=VARCHAR},
+      </if>
+      <if test="sLaunchFailReason != null" >
+        s_launch_fail_reason = #{sLaunchFailReason,jdbcType=VARCHAR},
+      </if>
+      <if test="nDelete != null" >
+        n_delete = #{nDelete,jdbcType=INTEGER},
+      </if>
+      <if test="sDescription != null" >
+        s_description = #{sDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sImg != null" >
+        s_img = #{sImg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gezhiwei.demo.dao.entity.HcFundWithBLOBs" >
+    update hc_fund
+    set s_uuid = #{sUuid,jdbcType=VARCHAR},
+      n_worker_id = #{nWorkerId,jdbcType=BIGINT},
+      n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      n_user_id = #{nUserId,jdbcType=BIGINT},
+      s_nick_name = #{sNickName,jdbcType=VARCHAR},
+      s_face_url = #{sFaceUrl,jdbcType=VARCHAR},
+      s_mobile_number = #{sMobileNumber,jdbcType=VARCHAR},
+      s_mobile_number_patient = #{sMobileNumberPatient,jdbcType=VARCHAR},
+      s_mobile_number_direct = #{sMobileNumberDirect,jdbcType=VARCHAR},
+      n_target_money = #{nTargetMoney,jdbcType=DECIMAL},
+      s_title = #{sTitle,jdbcType=VARCHAR},
+      n_sum_money = #{nSumMoney,jdbcType=DECIMAL},
+      n_number_of_donations = #{nNumberOfDonations,jdbcType=BIGINT},
+      n_withdraw_money = #{nWithdrawMoney,jdbcType=DECIMAL},
+      d_expire_time = #{dExpireTime,jdbcType=TIMESTAMP},
+      d_object_over_time = #{dObjectOverTime,jdbcType=TIMESTAMP},
+      n_forward_number = #{nForwardNumber,jdbcType=BIGINT},
+      n_upload_number = #{nUploadNumber,jdbcType=BIGINT},
+      n_first_donation_tag = #{nFirstDonationTag,jdbcType=INTEGER},
+      s_channel_type = #{sChannelType,jdbcType=INTEGER},
+      s_channel_category = #{sChannelCategory,jdbcType=VARCHAR},
+      s_channel_sub_category = #{sChannelSubCategory,jdbcType=VARCHAR},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      d_submit_time = #{dSubmitTime,jdbcType=TIMESTAMP},
+      d_launch_time = #{dLaunchTime,jdbcType=TIMESTAMP},
+      d_verify_time = #{dVerifyTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      s_star_remark = #{sStarRemark,jdbcType=VARCHAR},
+      n_star_id = #{nStarId,jdbcType=INTEGER},
+      s_star_created_by = #{sStarCreatedBy,jdbcType=VARCHAR},
+      d_star_update_time = #{dStarUpdateTime,jdbcType=TIMESTAMP},
+      n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      n_fund_status = #{nFundStatus,jdbcType=INTEGER},
+      s_volunteer_remark = #{sVolunteerRemark,jdbcType=VARCHAR},
+      s_fail_reason = #{sFailReason,jdbcType=VARCHAR},
+      s_launch_fail_reason = #{sLaunchFailReason,jdbcType=VARCHAR},
+      n_delete = #{nDelete,jdbcType=INTEGER},
+      s_description = #{sDescription,jdbcType=LONGVARCHAR},
+      s_img = #{sImg,jdbcType=LONGVARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcFund" >
+    update hc_fund
+    set s_uuid = #{sUuid,jdbcType=VARCHAR},
+      n_worker_id = #{nWorkerId,jdbcType=BIGINT},
+      n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      n_user_id = #{nUserId,jdbcType=BIGINT},
+      s_nick_name = #{sNickName,jdbcType=VARCHAR},
+      s_face_url = #{sFaceUrl,jdbcType=VARCHAR},
+      s_mobile_number = #{sMobileNumber,jdbcType=VARCHAR},
+      s_mobile_number_patient = #{sMobileNumberPatient,jdbcType=VARCHAR},
+      s_mobile_number_direct = #{sMobileNumberDirect,jdbcType=VARCHAR},
+      n_target_money = #{nTargetMoney,jdbcType=DECIMAL},
+      s_title = #{sTitle,jdbcType=VARCHAR},
+      n_sum_money = #{nSumMoney,jdbcType=DECIMAL},
+      n_number_of_donations = #{nNumberOfDonations,jdbcType=BIGINT},
+      n_withdraw_money = #{nWithdrawMoney,jdbcType=DECIMAL},
+      d_expire_time = #{dExpireTime,jdbcType=TIMESTAMP},
+      d_object_over_time = #{dObjectOverTime,jdbcType=TIMESTAMP},
+      n_forward_number = #{nForwardNumber,jdbcType=BIGINT},
+      n_upload_number = #{nUploadNumber,jdbcType=BIGINT},
+      n_first_donation_tag = #{nFirstDonationTag,jdbcType=INTEGER},
+      s_channel_type = #{sChannelType,jdbcType=INTEGER},
+      s_channel_category = #{sChannelCategory,jdbcType=VARCHAR},
+      s_channel_sub_category = #{sChannelSubCategory,jdbcType=VARCHAR},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      d_submit_time = #{dSubmitTime,jdbcType=TIMESTAMP},
+      d_launch_time = #{dLaunchTime,jdbcType=TIMESTAMP},
+      d_verify_time = #{dVerifyTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      s_star_remark = #{sStarRemark,jdbcType=VARCHAR},
+      n_star_id = #{nStarId,jdbcType=INTEGER},
+      s_star_created_by = #{sStarCreatedBy,jdbcType=VARCHAR},
+      d_star_update_time = #{dStarUpdateTime,jdbcType=TIMESTAMP},
+      n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      n_fund_status = #{nFundStatus,jdbcType=INTEGER},
+      s_volunteer_remark = #{sVolunteerRemark,jdbcType=VARCHAR},
+      s_fail_reason = #{sFailReason,jdbcType=VARCHAR},
+      s_launch_fail_reason = #{sLaunchFailReason,jdbcType=VARCHAR},
+      n_delete = #{nDelete,jdbcType=INTEGER}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

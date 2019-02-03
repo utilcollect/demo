@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcHospitalMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcHospital" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="s_code" property="sCode" jdbcType="VARCHAR" />
+    <result column="s_logo" property="sLogo" jdbcType="VARCHAR" />
+    <result column="n_level" property="nLevel" jdbcType="INTEGER" />
+    <result column="s_name" property="sName" jdbcType="VARCHAR" />
+    <result column="s_phone" property="sPhone" jdbcType="VARCHAR" />
+    <result column="n_province_id" property="nProvinceId" jdbcType="BIGINT" />
+    <result column="s_province_name" property="sProvinceName" jdbcType="VARCHAR" />
+    <result column="n_city_id" property="nCityId" jdbcType="BIGINT" />
+    <result column="s_city_name" property="sCityName" jdbcType="VARCHAR" />
+    <result column="n_area_id" property="nAreaId" jdbcType="BIGINT" />
+    <result column="s_area_name" property="sAreaName" jdbcType="VARCHAR" />
+    <result column="s_address" property="sAddress" jdbcType="VARCHAR" />
+    <result column="s_licence" property="sLicence" jdbcType="VARCHAR" />
+    <result column="s_comment" property="sComment" jdbcType="VARCHAR" />
+    <result column="n_status" property="nStatus" jdbcType="INTEGER" />
+    <result column="s_reason" property="sReason" jdbcType="VARCHAR" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+    <result column="d_approve_time" property="dApproveTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, s_code, s_logo, n_level, s_name, s_phone, n_province_id, s_province_name, n_city_id, 
+    s_city_name, n_area_id, s_area_name, s_address, s_licence, s_comment, n_status, s_reason, 
+    d_create_time, s_created_by, d_update_time, s_updated_by, d_approve_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_hospital
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_hospital
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcHospital" >
+    insert into hc_hospital (n_id, s_code, s_logo, 
+      n_level, s_name, s_phone, 
+      n_province_id, s_province_name, n_city_id, 
+      s_city_name, n_area_id, s_area_name, 
+      s_address, s_licence, s_comment, 
+      n_status, s_reason, d_create_time, 
+      s_created_by, d_update_time, s_updated_by, 
+      d_approve_time)
+    values (#{nId,jdbcType=BIGINT}, #{sCode,jdbcType=VARCHAR}, #{sLogo,jdbcType=VARCHAR}, 
+      #{nLevel,jdbcType=INTEGER}, #{sName,jdbcType=VARCHAR}, #{sPhone,jdbcType=VARCHAR}, 
+      #{nProvinceId,jdbcType=BIGINT}, #{sProvinceName,jdbcType=VARCHAR}, #{nCityId,jdbcType=BIGINT}, 
+      #{sCityName,jdbcType=VARCHAR}, #{nAreaId,jdbcType=BIGINT}, #{sAreaName,jdbcType=VARCHAR}, 
+      #{sAddress,jdbcType=VARCHAR}, #{sLicence,jdbcType=VARCHAR}, #{sComment,jdbcType=VARCHAR}, 
+      #{nStatus,jdbcType=INTEGER}, #{sReason,jdbcType=VARCHAR}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}, 
+      #{dApproveTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcHospital" >
+    insert into hc_hospital
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="sCode != null" >
+        s_code,
+      </if>
+      <if test="sLogo != null" >
+        s_logo,
+      </if>
+      <if test="nLevel != null" >
+        n_level,
+      </if>
+      <if test="sName != null" >
+        s_name,
+      </if>
+      <if test="sPhone != null" >
+        s_phone,
+      </if>
+      <if test="nProvinceId != null" >
+        n_province_id,
+      </if>
+      <if test="sProvinceName != null" >
+        s_province_name,
+      </if>
+      <if test="nCityId != null" >
+        n_city_id,
+      </if>
+      <if test="sCityName != null" >
+        s_city_name,
+      </if>
+      <if test="nAreaId != null" >
+        n_area_id,
+      </if>
+      <if test="sAreaName != null" >
+        s_area_name,
+      </if>
+      <if test="sAddress != null" >
+        s_address,
+      </if>
+      <if test="sLicence != null" >
+        s_licence,
+      </if>
+      <if test="sComment != null" >
+        s_comment,
+      </if>
+      <if test="nStatus != null" >
+        n_status,
+      </if>
+      <if test="sReason != null" >
+        s_reason,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+      <if test="dApproveTime != null" >
+        d_approve_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="sCode != null" >
+        #{sCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sLogo != null" >
+        #{sLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="nLevel != null" >
+        #{nLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sName != null" >
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhone != null" >
+        #{sPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="nProvinceId != null" >
+        #{nProvinceId,jdbcType=BIGINT},
+      </if>
+      <if test="sProvinceName != null" >
+        #{sProvinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="nCityId != null" >
+        #{nCityId,jdbcType=BIGINT},
+      </if>
+      <if test="sCityName != null" >
+        #{sCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="nAreaId != null" >
+        #{nAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="sAreaName != null" >
+        #{sAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null" >
+        #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sLicence != null" >
+        #{sLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="sComment != null" >
+        #{sComment,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sReason != null" >
+        #{sReason,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dApproveTime != null" >
+        #{dApproveTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcHospital" >
+    update hc_hospital
+    <set >
+      <if test="sCode != null" >
+        s_code = #{sCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sLogo != null" >
+        s_logo = #{sLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="nLevel != null" >
+        n_level = #{nLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sName != null" >
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPhone != null" >
+        s_phone = #{sPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="nProvinceId != null" >
+        n_province_id = #{nProvinceId,jdbcType=BIGINT},
+      </if>
+      <if test="sProvinceName != null" >
+        s_province_name = #{sProvinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="nCityId != null" >
+        n_city_id = #{nCityId,jdbcType=BIGINT},
+      </if>
+      <if test="sCityName != null" >
+        s_city_name = #{sCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="nAreaId != null" >
+        n_area_id = #{nAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="sAreaName != null" >
+        s_area_name = #{sAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null" >
+        s_address = #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sLicence != null" >
+        s_licence = #{sLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="sComment != null" >
+        s_comment = #{sComment,jdbcType=VARCHAR},
+      </if>
+      <if test="nStatus != null" >
+        n_status = #{nStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sReason != null" >
+        s_reason = #{sReason,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dApproveTime != null" >
+        d_approve_time = #{dApproveTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcHospital" >
+    update hc_hospital
+    set s_code = #{sCode,jdbcType=VARCHAR},
+      s_logo = #{sLogo,jdbcType=VARCHAR},
+      n_level = #{nLevel,jdbcType=INTEGER},
+      s_name = #{sName,jdbcType=VARCHAR},
+      s_phone = #{sPhone,jdbcType=VARCHAR},
+      n_province_id = #{nProvinceId,jdbcType=BIGINT},
+      s_province_name = #{sProvinceName,jdbcType=VARCHAR},
+      n_city_id = #{nCityId,jdbcType=BIGINT},
+      s_city_name = #{sCityName,jdbcType=VARCHAR},
+      n_area_id = #{nAreaId,jdbcType=BIGINT},
+      s_area_name = #{sAreaName,jdbcType=VARCHAR},
+      s_address = #{sAddress,jdbcType=VARCHAR},
+      s_licence = #{sLicence,jdbcType=VARCHAR},
+      s_comment = #{sComment,jdbcType=VARCHAR},
+      n_status = #{nStatus,jdbcType=INTEGER},
+      s_reason = #{sReason,jdbcType=VARCHAR},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      d_approve_time = #{dApproveTime,jdbcType=TIMESTAMP}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

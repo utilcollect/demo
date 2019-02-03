@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.CreditPatientCertMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.CreditPatientCert" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="s_real_name" property="sRealName" jdbcType="VARCHAR" />
+    <result column="n_card_type" property="nCardType" jdbcType="INTEGER" />
+    <result column="s_id_card_no" property="sIdCardNo" jdbcType="VARCHAR" />
+    <result column="s_patient_card_photo" property="sPatientCardPhoto" jdbcType="VARCHAR" />
+    <result column="s_id_card_front" property="sIdCardFront" jdbcType="VARCHAR" />
+    <result column="s_id_card_back" property="sIdCardBack" jdbcType="VARCHAR" />
+    <result column="n_pay_medical_insurance" property="nPayMedicalInsurance" jdbcType="INTEGER" />
+    <result column="n_buy_major_illness_insurance" property="nBuyMajorIllnessInsurance" jdbcType="INTEGER" />
+    <result column="n_complete_status" property="nCompleteStatus" jdbcType="INTEGER" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_fund_id, s_real_name, n_card_type, s_id_card_no, s_patient_card_photo, s_id_card_front, 
+    s_id_card_back, n_pay_medical_insurance, n_buy_major_illness_insurance, n_complete_status, 
+    d_create_time, s_created_by, d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from credit_patient_cert
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from credit_patient_cert
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.CreditPatientCert" >
+    insert into credit_patient_cert (n_id, n_fund_id, s_real_name, 
+      n_card_type, s_id_card_no, s_patient_card_photo, 
+      s_id_card_front, s_id_card_back, n_pay_medical_insurance, 
+      n_buy_major_illness_insurance, n_complete_status, 
+      d_create_time, s_created_by, d_update_time, 
+      s_updated_by)
+    values (#{nId,jdbcType=BIGINT}, #{nFundId,jdbcType=BIGINT}, #{sRealName,jdbcType=VARCHAR}, 
+      #{nCardType,jdbcType=INTEGER}, #{sIdCardNo,jdbcType=VARCHAR}, #{sPatientCardPhoto,jdbcType=VARCHAR}, 
+      #{sIdCardFront,jdbcType=VARCHAR}, #{sIdCardBack,jdbcType=VARCHAR}, #{nPayMedicalInsurance,jdbcType=INTEGER}, 
+      #{nBuyMajorIllnessInsurance,jdbcType=INTEGER}, #{nCompleteStatus,jdbcType=INTEGER}, 
+      #{dCreateTime,jdbcType=TIMESTAMP}, #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, 
+      #{sUpdatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.CreditPatientCert" >
+    insert into credit_patient_cert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="sRealName != null" >
+        s_real_name,
+      </if>
+      <if test="nCardType != null" >
+        n_card_type,
+      </if>
+      <if test="sIdCardNo != null" >
+        s_id_card_no,
+      </if>
+      <if test="sPatientCardPhoto != null" >
+        s_patient_card_photo,
+      </if>
+      <if test="sIdCardFront != null" >
+        s_id_card_front,
+      </if>
+      <if test="sIdCardBack != null" >
+        s_id_card_back,
+      </if>
+      <if test="nPayMedicalInsurance != null" >
+        n_pay_medical_insurance,
+      </if>
+      <if test="nBuyMajorIllnessInsurance != null" >
+        n_buy_major_illness_insurance,
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sRealName != null" >
+        #{sRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="nCardType != null" >
+        #{nCardType,jdbcType=INTEGER},
+      </if>
+      <if test="sIdCardNo != null" >
+        #{sIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sPatientCardPhoto != null" >
+        #{sPatientCardPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdCardFront != null" >
+        #{sIdCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdCardBack != null" >
+        #{sIdCardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="nPayMedicalInsurance != null" >
+        #{nPayMedicalInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="nBuyMajorIllnessInsurance != null" >
+        #{nBuyMajorIllnessInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="nCompleteStatus != null" >
+        #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.CreditPatientCert" >
+    update credit_patient_cert
+    <set >
+      <if test="nFundId != null" >
+        n_fund_id = #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sRealName != null" >
+        s_real_name = #{sRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="nCardType != null" >
+        n_card_type = #{nCardType,jdbcType=INTEGER},
+      </if>
+      <if test="sIdCardNo != null" >
+        s_id_card_no = #{sIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sPatientCardPhoto != null" >
+        s_patient_card_photo = #{sPatientCardPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdCardFront != null" >
+        s_id_card_front = #{sIdCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdCardBack != null" >
+        s_id_card_back = #{sIdCardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="nPayMedicalInsurance != null" >
+        n_pay_medical_insurance = #{nPayMedicalInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="nBuyMajorIllnessInsurance != null" >
+        n_buy_major_illness_insurance = #{nBuyMajorIllnessInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.CreditPatientCert" >
+    update credit_patient_cert
+    set n_fund_id = #{nFundId,jdbcType=BIGINT},
+      s_real_name = #{sRealName,jdbcType=VARCHAR},
+      n_card_type = #{nCardType,jdbcType=INTEGER},
+      s_id_card_no = #{sIdCardNo,jdbcType=VARCHAR},
+      s_patient_card_photo = #{sPatientCardPhoto,jdbcType=VARCHAR},
+      s_id_card_front = #{sIdCardFront,jdbcType=VARCHAR},
+      s_id_card_back = #{sIdCardBack,jdbcType=VARCHAR},
+      n_pay_medical_insurance = #{nPayMedicalInsurance,jdbcType=INTEGER},
+      n_buy_major_illness_insurance = #{nBuyMajorIllnessInsurance,jdbcType=INTEGER},
+      n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

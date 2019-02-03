@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcFundCommitMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcFundCommit" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="n_fund_id" property="nFundId" jdbcType="BIGINT" />
+    <result column="s_for_who" property="sForWho" jdbcType="VARCHAR" />
+    <result column="s_patient_real_name" property="sPatientRealName" jdbcType="VARCHAR" />
+    <result column="s_diseases_name" property="sDiseasesName" jdbcType="VARCHAR" />
+    <result column="n_patient_age" property="nPatientAge" jdbcType="INTEGER" />
+    <result column="s_patient_address" property="sPatientAddress" jdbcType="VARCHAR" />
+    <result column="d_fall_ill_date" property="dFallIllDate" jdbcType="DATE" />
+    <result column="s_hospital_name_now" property="sHospitalNameNow" jdbcType="VARCHAR" />
+    <result column="n_had_pay_money" property="nHadPayMoney" jdbcType="DECIMAL" />
+    <result column="s_commit_nick_name" property="sCommitNickName" jdbcType="VARCHAR" />
+    <result column="s_commit_real_name" property="sCommitRealName" jdbcType="VARCHAR" />
+    <result column="n_complete_status" property="nCompleteStatus" jdbcType="INTEGER" />
+    <result column="n_fund_type" property="nFundType" jdbcType="INTEGER" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_fund_id, s_for_who, s_patient_real_name, s_diseases_name, n_patient_age, 
+    s_patient_address, d_fall_ill_date, s_hospital_name_now, n_had_pay_money, s_commit_nick_name, 
+    s_commit_real_name, n_complete_status, n_fund_type, d_create_time, s_created_by, 
+    d_update_time, s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_fund_commit
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_fund_commit
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcFundCommit" >
+    insert into hc_fund_commit (n_id, n_fund_id, s_for_who, 
+      s_patient_real_name, s_diseases_name, n_patient_age, 
+      s_patient_address, d_fall_ill_date, s_hospital_name_now, 
+      n_had_pay_money, s_commit_nick_name, s_commit_real_name, 
+      n_complete_status, n_fund_type, d_create_time, 
+      s_created_by, d_update_time, s_updated_by
+      )
+    values (#{nId,jdbcType=BIGINT}, #{nFundId,jdbcType=BIGINT}, #{sForWho,jdbcType=VARCHAR}, 
+      #{sPatientRealName,jdbcType=VARCHAR}, #{sDiseasesName,jdbcType=VARCHAR}, #{nPatientAge,jdbcType=INTEGER}, 
+      #{sPatientAddress,jdbcType=VARCHAR}, #{dFallIllDate,jdbcType=DATE}, #{sHospitalNameNow,jdbcType=VARCHAR}, 
+      #{nHadPayMoney,jdbcType=DECIMAL}, #{sCommitNickName,jdbcType=VARCHAR}, #{sCommitRealName,jdbcType=VARCHAR}, 
+      #{nCompleteStatus,jdbcType=INTEGER}, #{nFundType,jdbcType=INTEGER}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundCommit" >
+    insert into hc_fund_commit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nFundId != null" >
+        n_fund_id,
+      </if>
+      <if test="sForWho != null" >
+        s_for_who,
+      </if>
+      <if test="sPatientRealName != null" >
+        s_patient_real_name,
+      </if>
+      <if test="sDiseasesName != null" >
+        s_diseases_name,
+      </if>
+      <if test="nPatientAge != null" >
+        n_patient_age,
+      </if>
+      <if test="sPatientAddress != null" >
+        s_patient_address,
+      </if>
+      <if test="dFallIllDate != null" >
+        d_fall_ill_date,
+      </if>
+      <if test="sHospitalNameNow != null" >
+        s_hospital_name_now,
+      </if>
+      <if test="nHadPayMoney != null" >
+        n_had_pay_money,
+      </if>
+      <if test="sCommitNickName != null" >
+        s_commit_nick_name,
+      </if>
+      <if test="sCommitRealName != null" >
+        s_commit_real_name,
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status,
+      </if>
+      <if test="nFundType != null" >
+        n_fund_type,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="nFundId != null" >
+        #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sForWho != null" >
+        #{sForWho,jdbcType=VARCHAR},
+      </if>
+      <if test="sPatientRealName != null" >
+        #{sPatientRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDiseasesName != null" >
+        #{sDiseasesName,jdbcType=VARCHAR},
+      </if>
+      <if test="nPatientAge != null" >
+        #{nPatientAge,jdbcType=INTEGER},
+      </if>
+      <if test="sPatientAddress != null" >
+        #{sPatientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dFallIllDate != null" >
+        #{dFallIllDate,jdbcType=DATE},
+      </if>
+      <if test="sHospitalNameNow != null" >
+        #{sHospitalNameNow,jdbcType=VARCHAR},
+      </if>
+      <if test="nHadPayMoney != null" >
+        #{nHadPayMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sCommitNickName != null" >
+        #{sCommitNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sCommitRealName != null" >
+        #{sCommitRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="nCompleteStatus != null" >
+        #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nFundType != null" >
+        #{nFundType,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcFundCommit" >
+    update hc_fund_commit
+    <set >
+      <if test="nFundId != null" >
+        n_fund_id = #{nFundId,jdbcType=BIGINT},
+      </if>
+      <if test="sForWho != null" >
+        s_for_who = #{sForWho,jdbcType=VARCHAR},
+      </if>
+      <if test="sPatientRealName != null" >
+        s_patient_real_name = #{sPatientRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDiseasesName != null" >
+        s_diseases_name = #{sDiseasesName,jdbcType=VARCHAR},
+      </if>
+      <if test="nPatientAge != null" >
+        n_patient_age = #{nPatientAge,jdbcType=INTEGER},
+      </if>
+      <if test="sPatientAddress != null" >
+        s_patient_address = #{sPatientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dFallIllDate != null" >
+        d_fall_ill_date = #{dFallIllDate,jdbcType=DATE},
+      </if>
+      <if test="sHospitalNameNow != null" >
+        s_hospital_name_now = #{sHospitalNameNow,jdbcType=VARCHAR},
+      </if>
+      <if test="nHadPayMoney != null" >
+        n_had_pay_money = #{nHadPayMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sCommitNickName != null" >
+        s_commit_nick_name = #{sCommitNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sCommitRealName != null" >
+        s_commit_real_name = #{sCommitRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="nCompleteStatus != null" >
+        n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nFundType != null" >
+        n_fund_type = #{nFundType,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcFundCommit" >
+    update hc_fund_commit
+    set n_fund_id = #{nFundId,jdbcType=BIGINT},
+      s_for_who = #{sForWho,jdbcType=VARCHAR},
+      s_patient_real_name = #{sPatientRealName,jdbcType=VARCHAR},
+      s_diseases_name = #{sDiseasesName,jdbcType=VARCHAR},
+      n_patient_age = #{nPatientAge,jdbcType=INTEGER},
+      s_patient_address = #{sPatientAddress,jdbcType=VARCHAR},
+      d_fall_ill_date = #{dFallIllDate,jdbcType=DATE},
+      s_hospital_name_now = #{sHospitalNameNow,jdbcType=VARCHAR},
+      n_had_pay_money = #{nHadPayMoney,jdbcType=DECIMAL},
+      s_commit_nick_name = #{sCommitNickName,jdbcType=VARCHAR},
+      s_commit_real_name = #{sCommitRealName,jdbcType=VARCHAR},
+      n_complete_status = #{nCompleteStatus,jdbcType=INTEGER},
+      n_fund_type = #{nFundType,jdbcType=INTEGER},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>

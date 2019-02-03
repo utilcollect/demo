@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gezhiwei.demo.dao.mapper.HcUserRegisterMapper" >
+  <resultMap id="BaseResultMap" type="com.gezhiwei.demo.dao.entity.HcUserRegister" >
+    <id column="n_id" property="nId" jdbcType="BIGINT" />
+    <result column="s_mobile" property="sMobile" jdbcType="VARCHAR" />
+    <result column="n_role" property="nRole" jdbcType="INTEGER" />
+    <result column="s_post" property="sPost" jdbcType="VARCHAR" />
+    <result column="n_hospital_id" property="nHospitalId" jdbcType="BIGINT" />
+    <result column="s_invite_name" property="sInviteName" jdbcType="VARCHAR" />
+    <result column="n_invite_type" property="nInviteType" jdbcType="INTEGER" />
+    <result column="s_invite_id" property="sInviteId" jdbcType="VARCHAR" />
+    <result column="n_worker_user_id" property="nWorkerUserId" jdbcType="BIGINT" />
+    <result column="n_user_id" property="nUserId" jdbcType="BIGINT" />
+    <result column="n_delete" property="nDelete" jdbcType="INTEGER" />
+    <result column="d_create_time" property="dCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_created_by" property="sCreatedBy" jdbcType="VARCHAR" />
+    <result column="d_update_time" property="dUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="s_updated_by" property="sUpdatedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, s_mobile, n_role, s_post, n_hospital_id, s_invite_name, n_invite_type, s_invite_id, 
+    n_worker_user_id, n_user_id, n_delete, d_create_time, s_created_by, d_update_time, 
+    s_updated_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hc_user_register
+    where n_id = #{nId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hc_user_register
+    where n_id = #{nId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gezhiwei.demo.dao.entity.HcUserRegister" >
+    insert into hc_user_register (n_id, s_mobile, n_role, 
+      s_post, n_hospital_id, s_invite_name, 
+      n_invite_type, s_invite_id, n_worker_user_id, 
+      n_user_id, n_delete, d_create_time, 
+      s_created_by, d_update_time, s_updated_by
+      )
+    values (#{nId,jdbcType=BIGINT}, #{sMobile,jdbcType=VARCHAR}, #{nRole,jdbcType=INTEGER}, 
+      #{sPost,jdbcType=VARCHAR}, #{nHospitalId,jdbcType=BIGINT}, #{sInviteName,jdbcType=VARCHAR}, 
+      #{nInviteType,jdbcType=INTEGER}, #{sInviteId,jdbcType=VARCHAR}, #{nWorkerUserId,jdbcType=BIGINT}, 
+      #{nUserId,jdbcType=BIGINT}, #{nDelete,jdbcType=INTEGER}, #{dCreateTime,jdbcType=TIMESTAMP}, 
+      #{sCreatedBy,jdbcType=VARCHAR}, #{dUpdateTime,jdbcType=TIMESTAMP}, #{sUpdatedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezhiwei.demo.dao.entity.HcUserRegister" >
+    insert into hc_user_register
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="sMobile != null" >
+        s_mobile,
+      </if>
+      <if test="nRole != null" >
+        n_role,
+      </if>
+      <if test="sPost != null" >
+        s_post,
+      </if>
+      <if test="nHospitalId != null" >
+        n_hospital_id,
+      </if>
+      <if test="sInviteName != null" >
+        s_invite_name,
+      </if>
+      <if test="nInviteType != null" >
+        n_invite_type,
+      </if>
+      <if test="sInviteId != null" >
+        s_invite_id,
+      </if>
+      <if test="nWorkerUserId != null" >
+        n_worker_user_id,
+      </if>
+      <if test="nUserId != null" >
+        n_user_id,
+      </if>
+      <if test="nDelete != null" >
+        n_delete,
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time,
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by,
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time,
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=BIGINT},
+      </if>
+      <if test="sMobile != null" >
+        #{sMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="nRole != null" >
+        #{nRole,jdbcType=INTEGER},
+      </if>
+      <if test="sPost != null" >
+        #{sPost,jdbcType=VARCHAR},
+      </if>
+      <if test="nHospitalId != null" >
+        #{nHospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="sInviteName != null" >
+        #{sInviteName,jdbcType=VARCHAR},
+      </if>
+      <if test="nInviteType != null" >
+        #{nInviteType,jdbcType=INTEGER},
+      </if>
+      <if test="sInviteId != null" >
+        #{sInviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="nWorkerUserId != null" >
+        #{nWorkerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="nUserId != null" >
+        #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="nDelete != null" >
+        #{nDelete,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezhiwei.demo.dao.entity.HcUserRegister" >
+    update hc_user_register
+    <set >
+      <if test="sMobile != null" >
+        s_mobile = #{sMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="nRole != null" >
+        n_role = #{nRole,jdbcType=INTEGER},
+      </if>
+      <if test="sPost != null" >
+        s_post = #{sPost,jdbcType=VARCHAR},
+      </if>
+      <if test="nHospitalId != null" >
+        n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="sInviteName != null" >
+        s_invite_name = #{sInviteName,jdbcType=VARCHAR},
+      </if>
+      <if test="nInviteType != null" >
+        n_invite_type = #{nInviteType,jdbcType=INTEGER},
+      </if>
+      <if test="sInviteId != null" >
+        s_invite_id = #{sInviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="nWorkerUserId != null" >
+        n_worker_user_id = #{nWorkerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="nUserId != null" >
+        n_user_id = #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="nDelete != null" >
+        n_delete = #{nDelete,jdbcType=INTEGER},
+      </if>
+      <if test="dCreateTime != null" >
+        d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sCreatedBy != null" >
+        s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dUpdateTime != null" >
+        d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdatedBy != null" >
+        s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezhiwei.demo.dao.entity.HcUserRegister" >
+    update hc_user_register
+    set s_mobile = #{sMobile,jdbcType=VARCHAR},
+      n_role = #{nRole,jdbcType=INTEGER},
+      s_post = #{sPost,jdbcType=VARCHAR},
+      n_hospital_id = #{nHospitalId,jdbcType=BIGINT},
+      s_invite_name = #{sInviteName,jdbcType=VARCHAR},
+      n_invite_type = #{nInviteType,jdbcType=INTEGER},
+      s_invite_id = #{sInviteId,jdbcType=VARCHAR},
+      n_worker_user_id = #{nWorkerUserId,jdbcType=BIGINT},
+      n_user_id = #{nUserId,jdbcType=BIGINT},
+      n_delete = #{nDelete,jdbcType=INTEGER},
+      d_create_time = #{dCreateTime,jdbcType=TIMESTAMP},
+      s_created_by = #{sCreatedBy,jdbcType=VARCHAR},
+      d_update_time = #{dUpdateTime,jdbcType=TIMESTAMP},
+      s_updated_by = #{sUpdatedBy,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=BIGINT}
+  </update>
+</mapper>
