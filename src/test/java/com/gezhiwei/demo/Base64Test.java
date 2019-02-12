@@ -24,16 +24,16 @@ public class Base64Test {
         System.out.println(new String(decode));
 
         Base64.Encoder encoder = Base64.getEncoder();
-        byte[] encode = encoder.encode("5".getBytes());
+        byte[] encode = encoder.encode("1089172".getBytes());
         System.out.println(new String(encode));
 
         Base64.Encoder mimeEncoder = Base64.getMimeEncoder();
-        byte[] encode1 = mimeEncoder.encode("5".getBytes());
+        byte[] encode1 = mimeEncoder.encode("1089172".getBytes());
         System.out.println(new String(encode1));
 
 
         Base64.Encoder urlEncoder = Base64.getUrlEncoder();
-        byte[] encode2 = urlEncoder.encode("5".getBytes());
+        byte[] encode2 = urlEncoder.encode("1089172".getBytes());
         System.out.println(new String(encode2));
     }
 
